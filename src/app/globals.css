@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ======================== 宣纸底纹 ======================== */
+body {
+  background-color: #fdf9f0;
+  color: #1c1c17;
+  font-family: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  background-image: radial-gradient(#e5dfd2 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
+}
+
+.rice-paper-pattern {
+  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+}
+
+.premium-shadow {
+  box-shadow: 0 16px 40px -10px rgba(169, 48, 39, 0.08);
+}
+
+.green-shadow {
+  box-shadow: 0 16px 40px -10px rgba(26, 106, 83, 0.08);
+}
+
+/* ======================== 动画 ======================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.animate-shake {
+  animation: shake 0.2s ease-in-out infinite alternate;
+}
