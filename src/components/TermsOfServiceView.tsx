@@ -75,8 +75,8 @@ function EnglishContent() {
           <p className="font-sans text-ink-light text-base leading-relaxed">
             All courses are offered as a one-time purchase. Upon successful
             payment, you will receive ongoing online streaming access to the
-            purchased course content during the operational lifetime of the
-            platform. We charge no hidden fees, recurring subscriptions, or
+            purchased course content for as long as the platform remains in
+            operation. We charge no hidden fees, recurring charges, or
             automatic renewals. Users are responsible for maintaining the security
             of their accounts and credentials. Account sharing, renting, or
             transferring to third parties is strictly prohibited. Purchasers of a
@@ -247,7 +247,7 @@ function ChineseContent() {
             2. 支付与访问权限
           </h2>
           <p className="font-sans text-ink-light text-base leading-relaxed">
-            所有课程均为一次性买断制数字内容。支付成功后，您将在本平台存续运营期间获得所购付费课程内容的持续在线访问权限。我们不收取任何隐藏费用或周期性订阅费用，亦不存在自动扣款机制。用户须妥善保管个人账号与登录凭证，严禁将账号出租、共享或转让给他人使用。您同时可免费获取该课程系列内后续上线的内容更新。
+            所有课程均为一次性买断制数字内容。支付成功后，您将在本平台存续运营期间获得所购付费课程内容的持续在线访问权限。我们不收取任何隐藏费用或周期性费用，亦不存在自动扣款机制。用户须妥善保管个人账号与登录凭证，严禁将账号出租、共享或转让给他人使用。您同时可免费获取该课程系列内后续上线的内容更新。
           </p>
         </section>
 

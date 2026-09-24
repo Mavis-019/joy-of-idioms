@@ -149,11 +149,11 @@ export default function SiteFooter() {
               <div className="p-4 rounded-xl bg-rice-darker border border-border-warm">
                 <p className="font-sans text-charcoal text-sm leading-relaxed">
                   <span className="font-bold text-primary">
-                    {isZh ? '独家雅致国风绘本视觉设计' : 'Exclusive Elegant Chinese-Style Picture Book Visual Design'}
+                    {isZh ? '独家雅致国风艺术视觉设计' : 'Exclusive Elegant Chinese-Style Visual Design'}
                     ：
                   </span>
                   {isZh
-                    ? '本站所有绘本与成语故事画面（如《盲人摸象》《守株待兔》场景），创意脚本与视觉设计由我方团队原创完成，为本平台专属数字视觉资产。未经我方书面授权，禁止以任何形式翻录、录屏、提取源文件或用于商业教学用途。'
+                    ? '本站所有成语故事画面（如《盲人摸象》《守株待兔》场景），创意脚本与视觉设计由我方团队原创完成，为本平台专属数字视觉资产。未经我方书面授权，禁止以任何形式翻录、录屏、提取源文件或用于商业教学用途。'
                     : 'All illustrations and idiom story scenes on this site (including scenes for Blind Men and the Elephant, Waiting for Hares by a Tree Stump) feature original creative scripts and visual designs created by our team as exclusive digital visual assets of this platform. Recording, screen capture, source file extraction and commercial teaching use are prohibited without our written authorization.'}
                 </p>
               </div>

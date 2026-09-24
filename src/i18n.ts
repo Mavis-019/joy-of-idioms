@@ -27,127 +27,33 @@ export const translations = {
   footer: {
     zh: {
       brandName: '悦读成语 JOY OF IDIOMS',
-      tagline: '让每一个成语都散发艺术光芒。通过动画与交互启发童年全局观，传承千年华夏智慧与高雅审美追求。',
+      tagline: '悦读成语，专为海外家庭打造中文成语视频课程，帮助孩子轻松学习中文、读懂传统成语文化。',
       langBtn: '🌐 English (英文)',
       privacy: '隐私政策',
       copyright: '海外版权说明',
       contact: '联系我们',
       feedback: '意见反馈',
       org: '华夏童蒙美育版权所有',
-
-      // 语言切换语音提示（切换到英文时说英文，切换到中文时说中文）
-      voiceSwitchToEn: 'Language switched to English.',
-      voiceSwitchToZh: '全站语言已一键切换为中文。',
-
-      // 隐私政策弹窗
-      privacyTitle: '🔒 隐私政策保护说明',
-      privacyLead: '我们高度重视您和您孩子的隐私安全。',
-      privacyPoints: [
-        { label: '数据收集：', body: '本系统作为一个儿童启蒙学习应用，所有学分、登录天数和徽章记录均保存在本地浏览器缓存中。我们不会主动收集、存储或传输您孩子的任何个人行为轨迹。' },
-        { label: '语音接口：', body: '我们的拼音发音导读调用了浏览器原生 SpeechSynthesis 接口，不经过任何第三方云端。您的语音数据是在本地机器中处理的。' },
-        { label: '海外未成年人保护：', body: '我们严格遵守 COPPA（儿童在线隐私保护法）和 GDPR 关于儿童隐私的数据规范。不设任何跟踪性第三方广告，拒绝一切垃圾算法推送，给孩子创造一方无广告污染的国风净土。' },
-      ],
-      privacyClose: '我知道了',
-
-      // 海外版权弹窗
-      copyrightTitle: '📜 海外版权与法律保护说明',
-      copyrightLead: '「悦读成语」全线课程、美术绘本、音画资产均已注册全球知识产权保护。',
-      copyrightPoints: [
-        { label: '独家宣纸风手工美术资产：', body: '本站所有展出的国风绘本与故事设计（如《如鱼得水》、《狐假虎威》场景）均由专业团队精心绘制。未经书面授权，禁止进行任何形式的翻录、下载或商业教学使用。' },
-        { label: '专业配音资产：', body: '中传配音名师标准的普通话录音、主题曲朗读均受跨国著作权版权保护。本站提供免费试听和完整授权购买服务。' },
-        { label: '盗版追究：', body: '我们在北美、欧洲、澳洲等国家均设有知识产权法务顾问。任何剽窃、倒卖本课程或在YouTube等平台盗版分发的主体将受到严厉的法律追究。' },
-      ],
-      copyrightClose: '接受并返回',
-
-      // 联系我们弹窗
-      contactTitle: '📬 联系我们',
-      contactDesc: '如果您是海外家长、华文学校负责人，欢迎随时联系我们洽谈教材采购、专属课程开通。',
-      contactNameLabel: '您的尊称',
-      contactNamePlaceholder: '例如：苏妈妈',
-      contactEmailLabel: '联系邮箱',
-      contactMsgLabel: '合作诉求 / 留言内容',
-      contactMsgPlaceholder: '请输入合作细节或咨询问题...',
-      contactSubmit: '投递信息',
-      contactSuccessTitle: '✨ 发送成功！',
-      contactSuccessDesc: '我们的华裔美育顾问会在 24 小时内回复您的邮箱。',
-      contactClose: '关闭',
-      contactEmail: 'support@joyofidioms.com',
-
-      // 意见反馈弹窗
-      feedbackTitle: '💡 意见与教学反馈',
-      feedbackDesc: '我们重视每一位海外家庭的交互与体验反馈。如您对绘本画风、字帖练习或拼音朗读速度有建议，请随时留言。',
-      feedbackEmailLabel: '您的邮箱',
-      feedbackContentLabel: '意见详情',
-      feedbackContentPlaceholder: '写下您的建议或系统优化期望...',
-      feedbackSubmit: '提交意见',
-      feedbackSuccessTitle: '✨ 感谢您的贡献！',
-      feedbackSuccessDesc: '我们已经收录了您的建议，系统优化中将予以考量！',
-      feedbackClose: '返回首页',
     },
     en: {
       brandName: 'JOY OF IDIOMS (悦读成语)',
-      tagline: 'Let every idiom radiate artistic brilliance. Re-igniting children’s global vision and aesthetic refinement through beautiful watercolor illustrations.',
+      tagline: 'Joy of Idioms creates Chinese idiom video courses for overseas families, helping children learn Chinese and understand traditional idiom culture with ease.',
       langBtn: '🌐 中文 (Chinese)',
       privacy: 'Privacy Policy',
       copyright: 'Overseas Copyright',
       contact: 'Contact Us',
       feedback: 'Opinion Feedback',
       org: 'Diaspora Chinese Kids Aesthetic Inc.',
-
-      voiceSwitchToEn: 'Language switched to English.',
-      voiceSwitchToZh: '全站语言已一键切换为中文。',
-
-      privacyTitle: '🔒 Privacy Policy',
-      privacyLead: 'We hold child privacy with the utmost importance.',
-      privacyPoints: [
-        { label: 'Data Collection: ', body: 'As an educational app for child development, all records, study streaks, and badges are securely stored inside your local browser storage. We do not track, collect, or share children’s behavior logs on remote servers.' },
-        { label: 'Speech Generation: ', body: 'Our text-to-speech engine calls native browser APIs (SpeechSynthesis) locally, meaning no speech data is sent to outer networks.' },
-        { label: 'Underage Safety: ', body: 'We strictly adhere to Children’s Online Privacy Protection Act (COPPA) and GDPR rules. We show zero advertisements, ensuring a clean, focused, and secure environment.' },
-      ],
-      privacyClose: 'Close',
-
-      copyrightTitle: '📜 Overseas Copyright & IP Statement',
-      copyrightLead: 'All visual picture-books, audios, and curriculum assets are protected under global IP laws.',
-      copyrightPoints: [
-        { label: 'Artistic Hand-Drawn Paintings: ', body: 'The rice-paper textured illustrations exhibited inside the trial videos (e.g. “As Happy as Fish”, “Fox and Tiger”) are original properties. Unlicensed reproduction or commercial distribution is strictly prohibited.' },
-        { label: 'Voice Assets: ', body: 'Audio records by Communication University of China speech masters are protected under international copyright treaties.' },
-        { label: 'Infringement Enforcement: ', body: 'Legal counselors in North America, Europe, and Oceania are retained to monitor IP theft. Violations on video sharing platforms will lead to standard DMCAs and damages.' },
-      ],
-      copyrightClose: 'Accept & Close',
-
-      contactTitle: '📬 Contact Us',
-      contactDesc: 'Welcome overseas parents and school principals to get in touch for custom curricula & bulk purchases.',
-      contactNameLabel: 'Your Name',
-      contactNamePlaceholder: 'e.g. Mother Su',
-      contactEmailLabel: 'Contact Email',
-      contactMsgLabel: 'Your Message',
-      contactMsgPlaceholder: 'Please describe your request...',
-      contactSubmit: 'Submit message',
-      contactSuccessTitle: '✨ Message Sent Successfully!',
-      contactSuccessDesc: 'Our family consultant will reply to your inbox within 24 hours.',
-      contactClose: 'Close',
-      contactEmail: 'support@joyofidioms.com',
-
-      feedbackTitle: '💡 Course & Product Feedback',
-      feedbackDesc: 'We treasure every family’s suggestions on brush illustration style, flashcards, or Pinyin speeds.',
-      feedbackEmailLabel: 'Your Email',
-      feedbackContentLabel: 'Detailed Suggestions',
-      feedbackContentPlaceholder: 'Write down your product suggestions...',
-      feedbackSubmit: 'Submit Feedback',
-      feedbackSuccessTitle: '✨ Thank You for Your Feedback!',
-      feedbackSuccessDesc: 'We have securely logged your suggestion to improve the aesthetic hall.',
-      feedbackClose: 'Close',
     },
   },
 
   /* ============================ HomeView ============================ */
   home: {
     zh: {
-      heroBadge: '前国家级媒体资深导演 ｜ 广播级视听品质',
       heroTitle: '全球华裔儿童・成语国学启蒙',
       heroFeatureSubtitle: '专为海外孩子定制的系统化中文成语课',
       heroSlogan: '告别零散中文素材，让中文自然生长',
-      btnTrial: '立即试听体验',
+      btnTrial: '立即试看',
       btnUnlock: '解锁完整体系',
       pinyinToggle: '开启随文拼音',
       childStamp: '童蒙\n美育',
@@ -172,8 +78,8 @@ export const translations = {
       adv2Title: '海外专属分级｜适配华裔学情，无痛进阶',
       adv2Desc: '摒弃脱离海外生活的传统教材，整套课程难度螺旋递进。词汇、场景与句式均贴合海外日常环境，让海外孩子轻松入门、稳步筑牢中文根基，学得懂、用得上、记得牢。',
       adv3Title: '顶级东方美育｜学成语，更养高阶国风审美',
-      adv3Desc: '拒绝廉价饱和卡通画风，采用极简高级的正统国风基调。百套原创宣纸质感艺术绘本，沉浸式还原东方美学意境。让孩子日积月累塑造高级审美，涵养东方文化审美底蕴。',
-      adv4Title: '全球东方智慧｜赋予孩子终身受用的底蕴与格局',
+      adv3Desc: '拒绝廉价饱和卡通画风，采用极简高级的正统国风基调。百套原创雅致国风艺术画面，沉浸式还原东方美学意境。让孩子日积月累塑造高级审美，涵养东方文化审美底蕴。',
+      adv4Title: '全球东方智慧｜赋予孩子一生受用的底蕴与格局',
       adv4Desc: '不止于字词背诵，融合传统国学智慧与全球普世价值观。以双语情景解析融合东方思维的处世哲学、情商格局。培养扎根中华文脉、高情商和适配全球竞争的华裔少年',
 
       themesTitle: '四大核心主题成语体系（共100节精品课）',
@@ -189,32 +95,34 @@ export const translations = {
 
       reviewTitle: '海外华裔家长真实赞誉',
       reviewSubtitle: '',
-      review1Text: '“之前给她们找过YouTube成语动画，语速太快词汇太本土，画面也机械，孩子根本听不懂。这套成语为海外孩子打造的，场景比较贴合我们的情境，老师讲得太好，语速舒缓、声情并茂，孩子现在成语不仅能听懂，自己还会用。”',
+      review1Text: '「之前给她们找过YouTube成语视频，语速太快词汇太本土，画面也很机械，孩子根本听不懂。这套成语为海外孩子打造，场景贴合我们的情境，老师讲得语速舒缓、声情并茂，孩子现在不仅能听懂成语，自己还会用。」',
       review1Parent: '苏妈妈 ｜ 7 岁龙凤胎母亲 · 多伦多',
-      review2Text: '“对比过十几种中文启蒙资源，唯独这套国风绘本质感惊艳。主讲老师是央视配音师资，普通话一级甲等，经验丰富，不用担心孩子没跟对好老师、学到不标准的口音。比较推荐，是文化底蕴和审美同步提升的好课。”',
+      review2Text: '「对比过十几种中文启蒙资源，这套国风画面质感非常好。主讲老师曾为央视节目配音，经验丰富，不用担心孩子没跟对好老师、学到不标准的口音。是一套提升文化底蕴兼顾审美的好课。」',
       review2Parent: 'Kevin Li ｜ 9 岁男孩父亲 · 洛杉矶',
-      review3Text: '“我从没见过这么漂亮的成语内容，之前网上找的内容画风低幼廉价，我和先生都没办法接受，这套很用心。老师的声音有种神奇的治愈力，孩子对中华文化智慧的理解度、表达能力提升非常明显。”',
+      review3Text: '「之前网上找的成语画风低幼廉价，我和先生都没办法接受。这套很不错，老师的声音有种神奇的治愈力，孩子对中华文化智慧的理解度、表达能力提升非常明显。」',
       review3Parent: '六岁孩子妈妈 · 法兰克福',
-      review4Text: '“尝试过自学成语，内容杂乱无章，语言有门槛，让孩子很抗拒。孩子能轻松跟上而且很有趣，他竟然能被吸引住。每天两集解放家长，大幅节省了我的时间。”',
+      review4Text: '「尝试过自学成语，内容杂乱无章，语言有门槛，孩子很抗拒。这套内容孩子能轻松跟上，最重要的是他能被吸引住，看得很专注。每天两集解放家长，大幅节省了我的时间。」',
       review4Parent: '吴爸爸 ｜ 4岁 & 8 岁双娃家长 · 奥克兰',
 
-      unlockPromoTitle: '限时特惠・终身权限，一套体系完成海外孩童成语美育启蒙！',
-      unlockPromoSubtitle: 'Limited-Time Offer | Lifetime Access: The Ultimate Idiom & Aesthetic Curriculum for Children Overseas.',
+      unlockPromoTitle: '限时特惠，一套体系完成海外孩童成语美育启蒙！',
       btnPromoUnlock: '立即解锁完整内容',
       price: '$59.00 USD',
       originalPrice: '$99.00 USD',
 
       // 视听体验区
       avBadge: '',
-      avTitle: '成语试听专区',
-      avDesc: '原创国风绘本，品读中华成语智慧',
+      avTitle: '成语试看专区',
+      avDesc: '原创国风艺术画面，品读中华成语智慧',
 
       // 视频卡片 1
       v1Badge: '点击试看',
       v1Title: '盲人摸象',
       v1Desc: '',
       v1Voice: '如鱼得水。好比鱼儿得到了水。用来比喻得到了最适合自己的环境。',
-      vSuccess: '试听成功！加赠学分 +10',
+      vSuccess: '试看成功！加赠学分 +10',
+
+      // 视频弹窗下方支付按钮
+      videoUnlockCta: '解锁完整100集成语故事',
 
       // 视频卡片 2
       v2Badge: '点击试看',
@@ -228,7 +136,7 @@ export const translations = {
       pedagogySub3: '东方美育 · 03',
       pedagogySub4: '全球思辨 · 04',
       pedagogyAction1: '点击原声收听中传语音...',
-      pedagogyAction2: '试听分级场景配音...',
+      pedagogyAction2: '试看分级场景配音...',
       pedagogyAction3: '开启宣纸风漫游艺术配乐...',
       pedagogyAction4: '收听情商实战造句...',
 
@@ -238,53 +146,18 @@ export const translations = {
       themeCard3: '社交与人际智慧',
       themeCard4: '高阶思维与格局',
 
-      // Hero CTA 语音
-      voiceTrial: '已为您定位至故事试听区。',
-      voiceUnlock: '正在开通尊享版全套课程，永久有效。',
-      voiceUnlockPromo: '正在开通尊享版全套课程，包含100课时。',
-
       // 视频弹窗 1
       m1Topbar: '悦读成语 · 第一课 · 试看',
       m1Pinyin: 'máng rén mō xiàng',
       m1Subtitle: '',
-      mCloseBtn: '解锁全部 100 集成语故事，享受终身无限制观看',
       mTip: '提示：再次点击下方暂停键或右上角返回按钮即可退回。',
 
       // 视频弹窗 2
       m2Topbar: '悦读成语 · 第二课 · 试看',
       m2Pinyin: 'shǒu zhū dài tù',
       m2Subtitle: '',
-
-      // 结账弹窗
-      sslPay: 'SSL SECURE PAY',
-      sslOnline: '● ONLINE',
-      checkoutSuccessTitle: '🎉 支付开通成功！',
-      checkoutSuccessDesc: '恭喜您！系统已成功解锁了全部 100 个精选成语，及四大核心主题的完整知识体系。快去个人中心查看点亮的国风徽章吧！',
-      checkoutAccount: '授权账户：',
-      checkoutScope: '解锁额度：',
-      checkoutScopeValue: '100 课时终身授权',
-      checkoutStart: '进入系统开始探索',
-      securePayBtn: '安全支付 {price}',
-      productTitle: '「悦读成语」100课尊享版终身全套',
-      productDesc: '包含：绘本动画、字帖、情景互动、名师朗读',
-      cardBtn: 'Credit Card (信用卡)',
-      paypalBtn: 'PayPal',
-      checkoutEmailLabel: '家长授权邮箱',
-      cardholderLabel: '持卡人姓名',
-      cardNumberLabel: '卡号',
-      cvvLabel: 'CVV',
-      paypalDesc: '您已选择使用 PayPal 进行海外安全快捷支付。点击下方支付按钮将通过 PayPal 安全托管通道自动完成订单。',
-      paypalBadge: '🛡️ PayPal Buyer Protection',
-      voiceCheckoutSuccess: '开通成功，欢迎开始成语探索！',
-
-      // 促销区英文副标题（zh 模式下显示的英文行）
-      promoLine1: '限时特惠・终身权限',
-      promoLine2: '一套体系完成海外孩童成语美育启蒙！',
-      promoEnSubtitle: 'Limited-Time Offer | Lifetime Access:',
-      promoEnSubtitle2: 'The Ultimate Idiom & Aesthetic Curriculum for Children Overseas.',
     },
     en: {
-      heroBadge: 'Former National Media Senior Director | Broadcast-Grade Audio-Visual Quality',
       heroTitle: 'Idiom Wisdom for Global Chinese Children',
       heroFeatureSubtitle: 'A systematic Chinese idiom curriculum custom-built for kids overseas',
       heroSlogan: 'Ditch fragmented Chinese materials — let Chinese grow naturally',
@@ -313,12 +186,12 @@ export const translations = {
       adv2Title: 'Exclusive Overseas Grading | Tailored to Diaspora Learning, Seamless Progression',
       adv2Desc: 'Abandoning traditional textbooks detached from lives abroad, the curriculum scales up dynamically. Vocab, scenarios, and sentence structures align with overseas daily environments, allowing kids to learn easily, practice effectively, and remember permanently.',
       adv3Title: 'Elite Eastern Aesthetics | Master Idioms while Nurturing High-Class Art Taste',
-      adv3Desc: 'Rejecting cheap, high-saturation cartoon style in favor of minimalist, elegant, and orthodox national art. Hundreds of hand-painted watercolor drawings on rice-paper textures restore the poetic Eastern aesthetic world, nurturing deep cultural and artistic appreciation.',
-      adv4Title: 'Global Eastern Wisdom | Empowering Children with Lifelong Depth & Vision',
+      adv3Desc: 'Rejecting cheap, high-saturation cartoon style in favor of minimalist, elegant, and orthodox national art. Hundreds of original elegant Chinese-style art illustrations restore the poetic Eastern aesthetic world, nurturing deep cultural and artistic appreciation.',
+      adv4Title: 'Global Eastern Wisdom | Empowering Children with Lasting Depth & Vision',
       adv4Desc: 'Beyond simple rote-memorization, we integrate traditional Chinese wisdom with global universal values. Through bilingual situational analysis, kids grasp Eastern philosophies of life and high-EQ mindsets, raising children rooted in heritage and ready for global competition.',
 
       themesTitle: 'Four Core Thematic Idiom Systems (100 Lessons)',
-      themesSubtitle: 'Step-by-step Chinese philosophy, giving children a lifelong broad mindset.',
+      themesSubtitle: 'Step-by-step Chinese philosophy, giving children a lasting broad mindset.',
       theme1: 'Nature & Fantasy Fables',
       theme1Desc: 'Using nature and animal stories to ignite curiosity, helping children grasp simple dialectical logic and natural philosophy.',
       theme2: 'Grit & Growth Mindset',
@@ -330,30 +203,32 @@ export const translations = {
 
       reviewTitle: 'Highly Recommended by Overseas Parents',
       reviewSubtitle: '',
-      review1Text: '"We tried YouTube idiom videos before, but the speed was too fast, vocabulary too local, and drawings looked mechanical. Diaspora kids couldn\'t understand. This course is customized for overseas kids; the contexts match our lives perfectly. The teacher reads beautifully, slowly, and expressively. Now my twins use idioms daily!"',
+      review1Text: 'I had tried YouTube idiom videos for my daughters before, but the pacing was too fast, the vocabulary too local, and the visuals felt mechanical — they simply couldn\'t follow. This set is made for overseas kids: the scenes match our daily life, and the teacher narrates slowly and expressively. Now they not only understand idioms, they even use them on their own.',
       review1Parent: 'Mother Su | Mother of 7-yo Twins, Toronto',
-      review2Text: '"Compared to dozens of Chinese resources, this national-art watercolor course is breathtaking. The educator is a CCTV-level professional with Class A Mandarin certification. Zero worries about accents. Highly recommended for syncing roots and fine art taste."',
+      review2Text: 'I compared over a dozen Chinese learning resources — the visual quality of this set is truly premium. The lead teacher once voiced programs for CCTV, so she is highly experienced; no worry about kids picking up a non-standard accent. A wonderful course that builds cultural depth with real aesthetic value.',
       review2Parent: 'Kevin Li | Father of 9-yo Boy, Los Angeles',
-      review3Text: '"I have never seen such beautiful idiom visuals! Standard online videos look extremely cheap, which my husband and I couldn\'t accept. This course is extremely dedicated. The teacher’s voice has a healing magic, boosting my child\'s fluency significantly!"',
+      review3Text: 'Most idiom resources we found online looked cheap and childish — my husband and I couldn\'t accept them. This one is excellent: the teacher\'s voice has an almost healing quality, and our child\'s comprehension of Chinese cultural wisdom and his ability to express himself have improved remarkably.',
       review3Parent: 'Mother of 6-yo child | Frankfurt',
-      review4Text: '"Self-teaching was unstructured and hit a language barrier, making my kid hate idioms. But with this, he stays fully engaged and loves it. Running 2 lessons a day liberates parents and saves massive personal hours!"',
+      review4Text: 'We tried self-study before, but the content was scattered and the language too difficult — my son resisted it. With this set he follows along easily and, most importantly, stays absorbed and focused. Two episodes a day frees up parents and saves me so much time.',
       review4Parent: 'Father Wu | Parent of 4 & 8-yo children, Auckland',
 
-      unlockPromoTitle: 'Limited-Time Offer | Lifetime Access: The Ultimate Idiom & Aesthetic Curriculum for Children Overseas.',
-      unlockPromoSubtitle: 'A structured, high-quality bilingual curriculum tailored for young learners overseas.',
+      unlockPromoTitle: 'Limited-Time Offer: The Ultimate Idiom & Aesthetic Curriculum for Children Overseas.',
       btnPromoUnlock: 'Unlock Complete Access Now',
       price: '$59.00 USD',
       originalPrice: '$99.00 USD',
 
       avBadge: '',
-      avTitle: 'Idiom Trial Listening',
-      avDesc: 'Original national-style picture books, savoring Chinese idiom wisdom',
+      avTitle: 'Idiom Free Demo',
+      avDesc: 'Original elegant Chinese-style visuals, savoring Chinese idiom wisdom',
 
       v1Badge: 'Click to Watch',
       v1Title: 'Blind Men and the Elephant',
       v1Desc: '',
       v1Voice: 'As Happy as Fish in Water. Having a perfect environment to flourish.',
       vSuccess: 'Audition Complete! +10 Points',
+
+      // 视频弹窗下方支付按钮
+      videoUnlockCta: 'Unlock All 100 Idiom Lessons',
 
       v2Badge: 'Click to Watch',
       v2Title: 'Waiting for Hares by the Stump',
@@ -374,45 +249,42 @@ export const translations = {
       themeCard3: 'Social-Emotional Learning',
       themeCard4: 'Critical Thinking & Perspective',
 
-      voiceTrial: 'Let’s enjoy the stories.',
-      voiceUnlock: 'Unlocking lifetime full access.',
-      voiceUnlockPromo: 'Launching payment portal.',
-
       m1Topbar: 'Joy of Idioms · Chapter 1 · Free Preview',
       m1Pinyin: 'máng rén mō xiàng',
       m1Subtitle: '',
-      mCloseBtn: 'Unlock All 100 Idiom Stories & Lifetime Access',
       mTip: 'Tip: Click below to stop or top-right to claim trial score.',
 
       m2Topbar: 'Joy of Idioms · Chapter 2 · Free Preview',
       m2Pinyin: 'shǒu zhū dài tù',
       m2Subtitle: '',
+    },
+  },
 
-      sslPay: 'SSL SECURE PAY',
-      sslOnline: '● ONLINE',
-      checkoutSuccessTitle: '🎉 Payment Successful!',
-      checkoutSuccessDesc: 'Congratulations! You have unlocked the full library of 100 lessons. Head to your Dashboard to check your master badges!',
-      checkoutAccount: 'Account:',
-      checkoutScope: 'Scope:',
-      checkoutScopeValue: '100 Lessons Lifetime',
-      checkoutStart: 'Start Exploring Now',
-      securePayBtn: 'Securely Pay {price}',
-      productTitle: 'Joy of Idioms (100 lessons) Lifetime Full',
-      productDesc: 'Includes: visual animations, worksheets, standard audios',
-      cardBtn: 'Credit Card (信用卡)',
-      paypalBtn: 'PayPal',
-      checkoutEmailLabel: 'Parent\'s Email',
-      cardholderLabel: 'Cardholder Name',
-      cardNumberLabel: 'Card Number',
-      cvvLabel: 'CVV',
-      paypalDesc: 'You have chosen PayPal. Click below to proceed securely via PayPal gateway.',
-      paypalBadge: '🛡️ PayPal Buyer Protection',
-      voiceCheckoutSuccess: 'Success! Unlock granted.',
-
-      promoLine1: '限时特惠・终身权限',
-      promoLine2: '一套体系完成海外孩童成语美育启蒙！',
-      promoEnSubtitle: 'Limited-Time Offer | Lifetime Access:',
-      promoEnSubtitle2: 'The Ultimate Idiom & Aesthetic Curriculum for Children Overseas.',
+  /* ============================ 统一结账弹窗（全站共用，跳转 Lemon Squeezy 托管结算） ============================ */
+  checkout: {
+    zh: {
+      topBadge: 'SSL 加密安全支付',
+      productTitle: '「Joy of Idioms（悦读成语）」100课精品成语视频课全套',
+      productDesc: '包含：100集精美国风成语视频课，标准普通话原声讲述。一次性购买，获得课程访问权限，随时回看学习。',
+      price: '$59.00 USD',
+      emailLabel: '接收课程账号邮箱',
+      emailPlaceholder: 'parent@example.com',
+      emailHint: '购买后课程权益将自动绑定至此邮箱，并发送收据确认单。',
+      payBtn: '前往安全结算 $59.00 USD',
+      bottomNote: '支持 PayPal、Visa、Mastercard 安全支付。可查阅我们的{refundLink}了解退款申请条件。',
+      refundLink: '退款政策',
+    },
+    en: {
+      topBadge: 'SSL Encrypted Secure Payment',
+      productTitle: 'Joy of Idioms — 100-Lesson Premium Chinese Idiom Video Course',
+      productDesc: 'Features 100 Chinese idiom video lessons with elegant Chinese-style visuals, narrated in standard Mandarin. One-time purchase for ongoing course access, review lessons anytime.',
+      price: '$59.00 USD',
+      emailLabel: 'Email for course access',
+      emailPlaceholder: 'parent@example.com',
+      emailHint: 'Your course access will be linked to this email, and your receipt will be sent here.',
+      payBtn: 'Proceed to secure checkout $59.00',
+      bottomNote: 'Secure payment via PayPal, Visa, Mastercard. Please view our {refundLink} for eligibility requirements.',
+      refundLink: 'Refund Policy',
     },
   },
 
@@ -425,108 +297,36 @@ export const translations = {
 
       // --- Toasts ---
       toastSpeechUnsupported: '当前浏览器不支持语音播报',
-      toastFavRemoved: '已取消收藏成语故事',
-      toastFavAdded: '成功加入收藏，随时温习！',
       toastProgressReset: '成语状态已重置为未学',
       toastIdiomCompleted: '恭喜孩子完成本节成语！勋章印章已点亮。',
       toastAllCompleted: '太棒了！100个成语已全部掌握！',
-      toastNeedSequential: '⚠️ 请先完成前面的成语故事学习，循序渐进哦！',
-      toastCheckInSuccess: '签到成功！孩子连续天数加一',
       toastCacheReset: '系统缓存已完全重置！',
-
-      // --- Speech synthesis text ---
-      speechIdiomCompleted: '恭喜孩子！学会了成语 {name}',
-      speechCheckInSuccess: '签到成功！连续学习天数加一！',
-      speechUnlockSuccess: '已成功解锁全套一百个成语故事，祝孩子学习愉快！',
-
-      // --- Payment / checkout ---
-      paymentSuccessMsg: '支付成功！100个东方成语故事已为您完整开启。',
-      checkoutLoadingMsg: '正在为您完整重构个人中心体验，请稍候...',
-
-      // --- Download alert ---
-      alertDownloadSuccess: '✨ 【{fileName}】已成功打包！双语超清高清美学画册及原声包已安全保存至您的下载文件夹。',
 
       // --- Confirm dialogs ---
       confirmReset: '确定要复位您的个人资料与全部学习进度吗？',
 
       // --- Top billing banner ---
-      bannerUnlockTitle: '解锁完整 100 个成语故事 ｜ 尊享终身无限学权益',
-      bannerUnlockDesc: '支持 PayPal / Visa / Mastercard 国际信用卡安全支付。专为海外华裔儿童定制的标准美育音频。',
+      bannerUnlockTitle: '解锁完整 100 个成语故事｜尊享课程权益，随时回看学习。',
+      bannerUnlockDesc: '支持 PayPal、Visa、Mastercard 国际信用卡安全支付。内容专为海外华裔儿童打造，带领孩子感受中华语言与文化之美。',
       bannerUnlockBtn: '立即特惠解锁 $59.00',
 
       // --- Header user info ---
       userAgeLabel: '{userAge} 岁 · 少儿国学',
 
       // --- Profile welcome card ---
-      welcomeBack: '欢迎回到成语大本营，{userName}',
-      currentStage: '当前学习阶段：{theme} ｜ 今日推荐掌握：2个成语（打牢高级表达功底）',
-      statTotalProgress: '总进度',
-      statStreakDays: '连续学习',
+      welcomeBack: '欢迎回来！开启今日的成语美育之旅',
       btnResumeLearning: '继续上次学习',
 
       // --- Courses tab ---
-      coursesSubtitle: '',
-      searchPlaceholder: '搜索成语、拼音、英文释义...',
+      freePreviewBadge: '免费试看',
+      studyNavTitle: '学习导航',
       themeLabel: '主题 0{id}',
       themeUnlocked: '已点亮',
-
-      // --- Study mode ---
-      studyModeTitle: '学习导航逻辑 ｜ 双轨学情定制',
-      studyModeDesc: '根据孩子中文基础一键切换，循序渐进或全景自由翻阅。',
-      btnSequential: '顺序学习 (推荐 3-6 岁)',
-      btnFreeBrowsing: '自由选读 (推荐 7-10 岁)',
 
       // --- Idiom card status ---
       statusReady: '待学',
       statusCompleted: '已点亮印章',
       statusReadNow: '点击开始研读',
-      statusNeedUnlock: '需订阅解锁',
-      statusLocked: '前置锁定',
-      btnUnlockTheme: '解锁本主题其余 22 个高级成语故事',
-
-      // --- Progress tab ---
-      dailyPlanTitle: '今日两集解放家长计划',
-      taskLabel: '任务 0{index}',
-      btnReview: '复习',
-      btnLearn: '研学',
-      medalTrackTitle: '国风传统美育大勋章',
-      medalTrackDesc: '孩子每完成一类，就会点亮对应传统印章。',
-      checkInTitle: '每日签到打卡',
-      checkInDesc: '培养孩子每日学习好习惯，今日学习完别忘打卡。',
-      btnCheckIn: '立即今日打卡',
-
-      // --- Favorites ---
-      favoritesTitle: '我的收藏夹',
-      favoritesEmpty: '尚未收藏成语，在成语卡片详情页点击心形可收藏。',
-      btnListen: '复听',
-
-      // --- Timeline ---
-      timelineTitle: '学习时光轴',
-      timelineEmpty: '还没有学习记录，赶紧点击成语卡片开始研读吧！',
-
-      // --- Billing tab ---
-      billingTitle: '尊贵会员服务与权益中心',
-      billingDesc: '订阅畅享100节视频课+配套音频无限回放，全套原创绘本 PDF 可离线下载打印。',
-      orderStatusLabel: '当前订单状态',
-      statusLifetimeMember: '终身全解锁尊享会员',
-      statusTrialUser: '游客试听用户',
-      btnSubscribe: '立即订阅 $59',
-      orderIdLabel: '订单编号: ORDER_ID_862901',
-      expiryLabel: '效期: 终身无限次更新访问',
-
-      // --- Download assets: ebook ---
-      ebookTitle: '100个成语双语艺术电子绘本',
-      ebookDesc: '超清无水印。特邀专业画师耗时半年精心手绘宣纸质感水墨，并包含完备中英对照、大字注音。支持iPad及高清打印。',
-      ebookFileName: '100成语双语艺术电子画卷.pdf',
-      packingFile: '打包下载中...',
-      btnDownloadEbook: '下载双语超清电子画册 PDF',
-
-      // --- Download assets: audio ---
-      audioTitle: 'Mavis央视标准无损MP3原声朗读包',
-      audioDesc: '包含全部100首由中传配音名师在专业录音棚灌制的国风音频。语速舒缓、口音纯正。最适合睡前、长途驾车背景播放磨耳朵。',
-      audioFileName: 'Mavis成语无损音频包.zip',
-      packingFolder: '打包下载中...',
-      btnDownloadAudio: '下载无损 MP3 朗读音频包 ZIP',
 
       // --- Settings tab: kids profile ---
       profileTitle: '华裔学者专属档案',
@@ -553,22 +353,8 @@ export const translations = {
       modalVoiceTitle: 'CCTV 播音名师原声播放器',
       modalVoiceDesc: '使用一级甲等普通话发音舒缓慢读，专为磨耳朵定制。',
       moralLabel: '💡 东方智慧启迪与格局：',
-      btnBookmarked: '已加入收藏',
-      btnAddBookmark: '加入收藏夹',
       btnMarkUnlearned: '重新标记为未学',
       btnMarkMastered: '标记为已掌握 🎓',
-
-      // --- Checkout modal ---
-      checkoutTitle: '👑 升级解锁完整成语美育体系',
-      checkoutDesc: '解锁全部 100 首中华大格局成语故事、中传标准播音原声朗读包，以及全套高清宣纸风双语电子画册及工作纸。一次订阅，终身无限次更新访问。',
-      checkoutOfferLabel: '限时特惠终身卡',
-      labelParentName: '家长姓名',
-      placeholderParentName: '例如：苏妈妈',
-      labelReceiptEmail: '接收邮箱',
-      checkoutSecureNote: '支持万事达、Visa 及 PayPal 安全结算。我们将发送确认账单到您的邮箱。',
-      btnCancelUpgrade: '暂不升级',
-      btnProcessing: '正在安全结算...',
-      btnPayNow: '安全结算 $59.00',
     },
     en: {
       // --- Defaults ---
@@ -577,108 +363,36 @@ export const translations = {
 
       // --- Toasts ---
       toastSpeechUnsupported: 'Browser Speech Synthesis not supported',
-      toastFavRemoved: 'Removed from favorites',
-      toastFavAdded: 'Added to favorites',
       toastProgressReset: 'Course progress reset',
       toastIdiomCompleted: 'Excellent! Medal unlocked.',
       toastAllCompleted: 'Excellent! All 100 idioms completed.',
-      toastNeedSequential: 'Please complete previous idioms first.',
-      toastCheckInSuccess: 'Daily check-in completed!',
       toastCacheReset: 'Cache reset completed successfully.',
-
-      // --- Speech synthesis text ---
-      speechIdiomCompleted: 'Congratulations! Completed idiom, {name}',
-      speechCheckInSuccess: 'Checked in successfully! Streak updated.',
-      speechUnlockSuccess: 'Successfully unlocked 100 Chinese idiom stories. Enjoy learning!',
-
-      // --- Payment / checkout ---
-      paymentSuccessMsg: 'Payment successful! 100 oriental fables unlocked.',
-      checkoutLoadingMsg: 'Loading complete premium dashboard...',
-
-      // --- Download alert ---
-      alertDownloadSuccess: '✨ 【{fileName}】packed successfully! High-definition art e-books and native standard recordings have been downloaded.',
 
       // --- Confirm dialogs ---
       confirmReset: 'Are you sure you want to reset all profiles and learning history?',
 
       // --- Top billing banner ---
-      bannerUnlockTitle: 'Unlock All 100 Chinese Idioms | Lifetime Unlimited Access',
-      bannerUnlockDesc: 'Secure checkout with PayPal / Visa / Mastercard. Curated premium aesthetic voice fables.',
+      bannerUnlockTitle: 'Unlock all 100 idiom stories | Enjoy premium course benefits and revisit anytime.',
+      bannerUnlockDesc: 'Secure payment with PayPal, Visa and Mastercard. Content crafted for overseas Chinese-heritage children to experience the beauty of Chinese language and culture.',
       bannerUnlockBtn: 'Unlock All for $59.00',
 
       // --- Header user info ---
       userAgeLabel: '{userAge} yrs · Diaspora',
 
       // --- Profile welcome card ---
-      welcomeBack: 'Welcome back, {userName}',
-      currentStage: 'Current Category: {theme} | Today\'s Goal: 2 Chinese Idioms',
-      statTotalProgress: 'Total Progress',
-      statStreakDays: 'Streak Days',
+      welcomeBack: 'Welcome back! Enjoy today\'s journey into Chinese wisdom.',
       btnResumeLearning: 'Resume Learning',
 
       // --- Courses tab ---
-      coursesSubtitle: '',
-      searchPlaceholder: 'Search idioms, Pinyin, English...',
+      freePreviewBadge: 'Free Demo',
+      studyNavTitle: 'Learning Navigation',
       themeLabel: 'Theme 0{id}',
       themeUnlocked: 'Unlocked',
-
-      // --- Study mode ---
-      studyModeTitle: 'Learning Path Control | Adaptive Study Mode',
-      studyModeDesc: 'Switch paths according to children\'s foundational levels.',
-      btnSequential: 'Sequential (Ages 3-6)',
-      btnFreeBrowsing: 'Free Browsing (Ages 7-10)',
 
       // --- Idiom card status ---
       statusReady: 'Ready',
       statusCompleted: 'Completed',
       statusReadNow: 'Read Now',
-      statusNeedUnlock: 'Need Unlock',
-      statusLocked: 'Locked',
-      btnUnlockTheme: 'Unlock Remaining 22 Stories in This Theme',
-
-      // --- Progress tab ---
-      dailyPlanTitle: 'Today\'s 2-Lesson Plan',
-      taskLabel: 'Task 0{index}',
-      btnReview: 'Review',
-      btnLearn: 'Learn',
-      medalTrackTitle: 'Aesthetic Medal Track',
-      medalTrackDesc: 'Unlock seals for each theme.',
-      checkInTitle: 'Daily Study Check-in',
-      checkInDesc: 'Cultivate a continuous learning habit.',
-      btnCheckIn: 'Check In Today',
-
-      // --- Favorites ---
-      favoritesTitle: 'My Bookmarked Stories',
-      favoritesEmpty: 'No bookmarked idiom stories yet.',
-      btnListen: 'Listen',
-
-      // --- Timeline ---
-      timelineTitle: 'Learning Timeline',
-      timelineEmpty: 'No learning logs yet.',
-
-      // --- Billing tab ---
-      billingTitle: 'Premium Privileges Center',
-      billingDesc: 'Subscribe to enjoy 100 video lessons + unlimited audio replay. Full original picture book PDFs available for offline download and printing.',
-      orderStatusLabel: 'ORDER STATUS',
-      statusLifetimeMember: 'Lifetime Premium Access',
-      statusTrialUser: 'Free Trial Access',
-      btnSubscribe: 'Subscribe Now $59',
-      orderIdLabel: 'Order ID: ORDER_ID_862901',
-      expiryLabel: 'Expiry: Lifetime unlimited access',
-
-      // --- Download assets: ebook ---
-      ebookTitle: '100 Chengyu Bilingual Art E-Books',
-      ebookDesc: 'Watermark-free, high-definition watercolor e-books optimized for prints and tablets.',
-      ebookFileName: '100_Chengyu_Bilingual_Aesthetic_Ebook.pdf',
-      packingFile: 'Packing file...',
-      btnDownloadEbook: 'Download HD Art PDF',
-
-      // --- Download assets: audio ---
-      audioTitle: 'Mavis Teacher Standard Audio MP3 Packet',
-      audioDesc: 'Lossless audio resources recorded by CUC Speech Master Mavis in standard studio environments.',
-      audioFileName: 'Mavis_Chengyu_Master_Speech_Lossless.zip',
-      packingFolder: 'Packing folder...',
-      btnDownloadAudio: 'Download Lossless Audio Pack',
 
       // --- Settings tab: kids profile ---
       profileTitle: 'Kids Personal Profile',
@@ -705,22 +419,8 @@ export const translations = {
       modalVoiceTitle: 'Standard CCTV Broadcast Voice Player',
       modalVoiceDesc: 'Slow Mandarin speech specifically designed for listening.',
       moralLabel: '💡 Eastern Wisdom & Global View:',
-      btnBookmarked: 'Bookmarked',
-      btnAddBookmark: 'Bookmark Story',
       btnMarkUnlearned: 'Mark as Unlearned',
       btnMarkMastered: 'Mark as Mastered 🎓',
-
-      // --- Checkout modal ---
-      checkoutTitle: '👑 Upgrade to Premium Access',
-      checkoutDesc: 'Unlock all 100 Chinese idioms, professional voice recordings, and high-definition watercolor books. Lifetime access with a single payment.',
-      checkoutOfferLabel: 'Lifetime Access Offer',
-      labelParentName: 'Parent Name',
-      placeholderParentName: 'e.g. Mother Su',
-      labelReceiptEmail: 'Receipt Email',
-      checkoutSecureNote: 'Encrypted secure transactions via Visa, MasterCard and PayPal.',
-      btnCancelUpgrade: 'Cancel',
-      btnProcessing: 'Processing...',
-      btnPayNow: 'Pay $59.00 USD',
     },
   },
 };
@@ -734,6 +434,7 @@ export function getT(lang: Language) {
     header: translations.header[lang],
     footer: translations.footer[lang],
     home: translations.home[lang],
+    checkout: translations.checkout[lang],
     dashboard: translations.dashboard[lang] as Record<string, string>,
   };
 }

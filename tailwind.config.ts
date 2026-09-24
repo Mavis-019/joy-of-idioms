@@ -23,6 +23,8 @@ const config: Config = {
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', '"Inter"', 'system-ui', 'sans-serif'],
         serif: ['"Noto Serif SC"', '"Playfair Display"', 'serif'],
+        // 数字专用：半角比例数字，与汉字混排紧凑（商品标题/描述中的数字）
+        inter: ['Inter', 'system-ui', 'sans-serif'],
       },
     },
   },

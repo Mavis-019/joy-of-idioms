@@ -1,21 +1,19 @@
 /**
  * HomeView 组件 — 首页营销落地页
  * 包含：Hero、讲师背书、四大核心优势、四大主题、家长评价、限时特惠、视听试听、
- * 视频弹窗、结账弹窗。全站统一页脚 SiteFooter 由 layout.tsx 全局挂载。
+ * 视频弹窗、统一结账弹窗（跳转 Lemon Squeezy 托管结算）。
+ * 全站统一页脚 SiteFooter 由 layout.tsx 全局挂载。
  */
 
 'use client';
 
 import { useState, useRef } from 'react';
-import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Play,
   X,
   Check,
   Lock,
-  CreditCard,
-  Shield,
   Star,
   Quote,
   ArrowRight,
@@ -27,55 +25,33 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '@/lib/language-context';
 import { THEME_NAMES } from '@/data/idiomsData';
+import CheckoutModal from '@/components/CheckoutModal';
 
 export default function HomeView() {
   const { t, language } = useLanguage();
   const home = t.home;
-  const footer = t.footer;
 
   // --- 弹窗与状态管理 ---
   const [showVideo1, setShowVideo1] = useState(false);
   const [showVideo2, setShowVideo2] = useState(false);
   const [showCheckout, setShowCheckout] = useState(false);
-  const [checkoutSuccess, setCheckoutSuccess] = useState(false);
-  const [paymentMethod, setPaymentMethod] = useState<'card' | 'paypal'>('card');
   const [toast, setToast] = useState<string | null>(null);
 
   const avRef = useRef<HTMLDivElement>(null);
-
-  // --- 语音合成 ---
-  const speak = (text: string) => {
-    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = language === 'zh' ? 'zh-CN' : 'en-US';
-      utterance.rate = 0.9;
-      window.speechSynthesis.speak(utterance);
-    }
-  };
-
-  const stopSpeak = () => {
-    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-    }
-  };
 
   const showToast = (msg: string) => {
     setToast(msg);
     setTimeout(() => setToast(null), 2600);
   };
 
-  // --- 滚动到视听试听区 ---
+  // --- 滚动到试看区 ---
   const scrollToAV = () => {
     avRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    speak(home.voiceTrial);
   };
 
   // --- 解锁按钮 ---
   const handleUnlock = () => {
     setShowCheckout(true);
-    setCheckoutSuccess(false);
-    speak(home.voiceUnlock);
   };
 
   // --- 试听视频 1 ---
@@ -92,18 +68,10 @@ export default function HomeView() {
 
   // --- 关闭视频弹窗 ---
   const closeVideo1 = () => {
-    stopSpeak();
     setShowVideo1(false);
   };
   const closeVideo2 = () => {
-    stopSpeak();
     setShowVideo2(false);
-  };
-
-  // --- 支付提交 ---
-  const handlePay = () => {
-    setCheckoutSuccess(true);
-    speak(home.voiceCheckoutSuccess);
   };
 
   // --- 数据准备 ---
@@ -137,8 +105,6 @@ export default function HomeView() {
     { text: home.review3Text, parent: home.review3Parent, tint: 'bg-[#e8dcdc]' },
     { text: home.review4Text, parent: home.review4Parent, tint: 'bg-[#dce2e8]' },
   ];
-
-  const securePayLabel = home.securePayBtn.replace('{price}', home.price);
 
   return (
     <main className="bg-rice">
@@ -195,12 +161,6 @@ export default function HomeView() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold tracking-wide mb-6">
-                <Sparkles className="w-3.5 h-3.5" />
-                {home.heroBadge}
-              </div>
-
               {/* 标题 + 水墨笔触装饰 */}
               <div className="relative mb-4">
                 <h1 className="font-serif font-black text-3xl md:text-5xl lg:text-6xl leading-tight bg-gradient-to-r from-charcoal via-primary to-tertiary bg-clip-text text-transparent">
@@ -240,21 +200,19 @@ export default function HomeView() {
                 {home.heroSlogan}
               </p>
 
-              {/* CTA 按钮 — 双语双行 */}
+              {/* CTA 按钮 — 按当前语言显示 */}
               <div className="flex flex-wrap items-center gap-4">
                 <button
                   onClick={scrollToAV}
-                  className="inline-flex flex-col items-center justify-center gap-0.5 px-7 py-3 rounded-full bg-primary hover:bg-primary-hover text-rice font-sans font-bold shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] min-w-[180px]"
+                  className="inline-flex items-center justify-center px-7 py-3 rounded-full bg-primary hover:bg-primary-hover text-rice font-sans font-bold text-sm shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] min-w-[180px]"
                 >
-                  <span className="text-sm leading-tight">Watch Free Demo</span>
-                  <span className="text-xs font-medium opacity-80 leading-tight">{home.btnTrial}</span>
+                  {home.btnTrial}
                 </button>
                 <button
                   onClick={handleUnlock}
-                  className="inline-flex flex-col items-center justify-center gap-0.5 px-7 py-3 rounded-full bg-charcoal hover:bg-ink-light text-rice font-sans font-bold shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] min-w-[180px]"
+                  className="inline-flex items-center justify-center px-7 py-3 rounded-full bg-charcoal hover:bg-ink-light text-rice font-sans font-bold text-sm shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] min-w-[180px]"
                 >
-                  <span className="text-sm leading-tight">Unlock Full Access</span>
-                  <span className="text-xs font-medium opacity-80 leading-tight">{home.btnUnlock}</span>
+                  {home.btnUnlock}
                 </button>
               </div>
             </motion.div>
@@ -572,12 +530,9 @@ export default function HomeView() {
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-rice/5 rounded-full translate-y-1/3 -translate-x-1/3" />
 
             <div className="relative">
-              <h2 className="font-serif font-black text-rice text-2xl md:text-4xl mb-3 leading-tight">
+              <h2 className="font-serif font-black text-rice text-2xl md:text-4xl mb-6 leading-tight">
                 {home.unlockPromoTitle}
               </h2>
-              <p className="font-sans text-rice/80 text-sm md:text-base max-w-3xl mx-auto mb-6">
-                {home.unlockPromoSubtitle}
-              </p>
 
               {/* 价格 */}
               <div className="flex items-center justify-center gap-3 mb-8">
@@ -648,10 +603,9 @@ export default function HomeView() {
                 </h3>
                 <button
                   onClick={() => { setShowVideo1(false); handleUnlock(); }}
-                  className="w-full py-3 rounded-full bg-primary hover:bg-primary-hover text-rice font-sans font-bold transition-colors"
+                  className="w-full py-3 rounded-full bg-primary hover:bg-primary-hover text-rice font-sans font-bold text-sm transition-colors"
                 >
-                  <span className="block text-sm">Unlock All 100 Idiom Stories & Lifetime Access</span>
-                  <span className="block text-xs opacity-80 mt-1">解锁全部 100 集成语故事，享受终身无限制观看</span>
+                  {home.videoUnlockCta}
                 </button>
               </div>
             </motion.div>
@@ -703,10 +657,9 @@ export default function HomeView() {
                 </h3>
                 <button
                   onClick={() => { setShowVideo2(false); handleUnlock(); }}
-                  className="w-full py-3 rounded-full bg-secondary hover:bg-secondary-hover text-rice font-sans font-bold transition-colors"
+                  className="w-full py-3 rounded-full bg-secondary hover:bg-secondary-hover text-rice font-sans font-bold text-sm transition-colors"
                 >
-                  <span className="block text-sm">Unlock All 100 Idiom Stories & Lifetime Access</span>
-                  <span className="block text-xs opacity-80 mt-1">解锁全部 100 集成语故事，享受终身无限制观看</span>
+                  {home.videoUnlockCta}
                 </button>
               </div>
             </motion.div>
@@ -714,200 +667,8 @@ export default function HomeView() {
         )}
       </AnimatePresence>
 
-      {/* ============================ 9. Checkout Modal ============================ */}
-      <AnimatePresence>
-        {showCheckout && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-charcoal/80 backdrop-blur-sm"
-            onClick={() => { setShowCheckout(false); setCheckoutSuccess(false); }}
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="bg-rice rounded-3xl max-w-lg w-full overflow-hidden premium-shadow max-h-[90vh] overflow-y-auto"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {!checkoutSuccess ? (
-                <>
-                  {/* SSL 安全支付顶栏 */}
-                  <div className="flex items-center justify-between px-6 py-4 bg-charcoal text-rice">
-                    <div className="flex items-center gap-2">
-                      <Lock className="w-4 h-4 text-secondary" />
-                      <span className="font-sans font-bold text-xs tracking-widest">{home.sslPay}</span>
-                    </div>
-                    <span className="font-sans text-xs text-secondary">{home.sslOnline}</span>
-                    <button
-                      onClick={() => { setShowCheckout(false); setCheckoutSuccess(false); }}
-                      className="p-1 hover:bg-rice/20 rounded-full transition-colors"
-                    >
-                      <X className="w-5 h-5" />
-                    </button>
-                  </div>
-
-                  <div className="p-6">
-                    {/* 产品信息 */}
-                    <div className="flex items-start gap-4 p-4 rounded-2xl bg-rice-darker border border-border-warm mb-6">
-                      <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">
-                        <Sparkles className="w-6 h-6 text-rice" />
-                      </div>
-                      <div className="flex-grow">
-                        <h3 className="font-serif font-bold text-charcoal text-sm mb-1">{home.productTitle}</h3>
-                        <p className="font-sans text-ink-light text-xs mb-2">{home.productDesc}</p>
-                        <span className="font-serif font-black text-primary text-lg">{home.price}</span>
-                      </div>
-                    </div>
-
-                    {/* 支付方式切换 */}
-                    <div className="grid grid-cols-2 gap-3 mb-6">
-                      <button
-                        onClick={() => setPaymentMethod('card')}
-                        className={`flex items-center justify-center gap-2 py-3 rounded-xl border-2 font-sans font-bold text-xs transition-all ${
-                          paymentMethod === 'card'
-                            ? 'border-primary bg-primary/10 text-primary'
-                            : 'border-border-warm text-ink-light hover:border-primary/50'
-                        }`}
-                      >
-                        <CreditCard className="w-4 h-4" />
-                        {home.cardBtn}
-                      </button>
-                      <button
-                        onClick={() => setPaymentMethod('paypal')}
-                        className={`flex items-center justify-center gap-2 py-3 rounded-xl border-2 font-sans font-bold text-xs transition-all ${
-                          paymentMethod === 'paypal'
-                            ? 'border-primary bg-primary/10 text-primary'
-                            : 'border-border-warm text-ink-light hover:border-primary/50'
-                        }`}
-                      >
-                        <Shield className="w-4 h-4" />
-                        {home.paypalBtn}
-                      </button>
-                    </div>
-
-                    {/* 信用卡表单 */}
-                    {paymentMethod === 'card' ? (
-                      <form onSubmit={(e) => { e.preventDefault(); handlePay(); }} className="space-y-4">
-                        <div>
-                          <label className="block font-sans text-xs font-semibold text-charcoal mb-1.5">
-                            {home.cardholderLabel}
-                          </label>
-                          <input
-                            type="text"
-                            required
-                            placeholder={footer.contactNamePlaceholder}
-                            className="w-full px-4 py-2.5 rounded-xl border border-border-warm bg-rice font-sans text-sm text-charcoal focus:outline-none focus:border-primary transition-colors"
-                          />
-                        </div>
-                        <div>
-                          <label className="block font-sans text-xs font-semibold text-charcoal mb-1.5">
-                            {home.cardNumberLabel}
-                          </label>
-                          <input
-                            type="text"
-                            required
-                            placeholder="4242 4242 4242 4242"
-                            className="w-full px-4 py-2.5 rounded-xl border border-border-warm bg-rice font-sans text-sm text-charcoal focus:outline-none focus:border-primary transition-colors"
-                          />
-                        </div>
-                        <div className="grid grid-cols-2 gap-3">
-                          <div>
-                            <label className="block font-sans text-xs font-semibold text-charcoal mb-1.5">
-                              {home.cvvLabel}
-                            </label>
-                            <input
-                              type="text"
-                              required
-                              placeholder="123"
-                              className="w-full px-4 py-2.5 rounded-xl border border-border-warm bg-rice font-sans text-sm text-charcoal focus:outline-none focus:border-primary transition-colors"
-                            />
-                          </div>
-                          <div>
-                            <label className="block font-sans text-xs font-semibold text-charcoal mb-1.5">
-                              {home.checkoutEmailLabel}
-                            </label>
-                            <input
-                              type="email"
-                              required
-                              placeholder="parent@example.com"
-                              className="w-full px-4 py-2.5 rounded-xl border border-border-warm bg-rice font-sans text-sm text-charcoal focus:outline-none focus:border-primary transition-colors"
-                            />
-                          </div>
-                        </div>
-                        <button
-                          type="submit"
-                          className="w-full py-3.5 rounded-full bg-primary hover:bg-primary-hover text-rice font-sans font-black text-sm shadow-lg transition-colors flex items-center justify-center gap-2"
-                        >
-                          <Lock className="w-4 h-4" />
-                          {securePayLabel}
-                        </button>
-                      </form>
-                    ) : (
-                      <div className="space-y-4">
-                        <div className="p-4 rounded-2xl bg-rice-darker border border-border-warm">
-                          <p className="font-sans text-ink-light text-xs leading-relaxed mb-3">
-                            {home.paypalDesc}
-                          </p>
-                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-bold">
-                            <Shield className="w-3.5 h-3.5" />
-                            {home.paypalBadge}
-                          </span>
-                        </div>
-                        <button
-                          onClick={handlePay}
-                          className="w-full py-3.5 rounded-full bg-primary hover:bg-primary-hover text-rice font-sans font-black text-sm shadow-lg transition-colors flex items-center justify-center gap-2"
-                        >
-                          <Lock className="w-4 h-4" />
-                          {securePayLabel}
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                </>
-              ) : (
-                /* 支付成功页 */
-                <div className="p-8 text-center">
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: 'spring', damping: 15, stiffness: 200 }}
-                    className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center mx-auto mb-5"
-                  >
-                    <Check className="w-8 h-8 text-rice" />
-                  </motion.div>
-                  <h3 className="font-serif font-black text-charcoal text-xl mb-3">
-                    {home.checkoutSuccessTitle}
-                  </h3>
-                  <p className="font-sans text-ink-light text-sm leading-relaxed mb-5">
-                    {home.checkoutSuccessDesc}
-                  </p>
-                  <div className="space-y-2 mb-6 text-left bg-rice-darker rounded-2xl p-4 border border-border-warm">
-                    <div className="flex justify-between font-sans text-xs">
-                      <span className="text-ink-light">{home.checkoutAccount}</span>
-                      <span className="text-charcoal font-semibold">{footer.contactEmail}</span>
-                    </div>
-                    <div className="flex justify-between font-sans text-xs">
-                      <span className="text-ink-light">{home.checkoutScope}</span>
-                      <span className="text-primary font-semibold">{home.checkoutScopeValue}</span>
-                    </div>
-                  </div>
-                  <Link
-                    href="/dashboard"
-                    onClick={() => { setShowCheckout(false); setCheckoutSuccess(false); }}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary hover:bg-primary-hover text-rice font-sans font-bold text-sm transition-colors"
-                  >
-                    {home.checkoutStart}
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              )}
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* ============================ 9. 统一结账弹窗（跳转 Lemon Squeezy 托管结算） ============================ */}
+      <CheckoutModal open={showCheckout} onClose={() => setShowCheckout(false)} />
 
       {/* ============================ Toast 提示 ============================ */}
       <AnimatePresence>
