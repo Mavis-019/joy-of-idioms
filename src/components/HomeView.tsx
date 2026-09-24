@@ -1,7 +1,7 @@
 /**
  * HomeView 组件 — 首页营销落地页
  * 包含：Hero、讲师背书、四大核心优势、四大主题、家长评价、限时特惠、视听试听、
- * 视频弹窗、结账弹窗、Footer 隐私/版权/联系/反馈弹窗
+ * 视频弹窗、结账弹窗。全站统一页脚 SiteFooter 由 layout.tsx 全局挂载。
  */
 
 'use client';
@@ -15,10 +15,7 @@ import {
   Check,
   Lock,
   CreditCard,
-  Mail,
-  MessageSquare,
   Shield,
-  Globe,
   Star,
   Quote,
   ArrowRight,
@@ -27,13 +24,12 @@ import {
   Users,
   Palette,
   Brain,
-  Send,
 } from 'lucide-react';
 import { useLanguage } from '@/lib/language-context';
 import { THEME_NAMES } from '@/data/idiomsData';
 
 export default function HomeView() {
-  const { t, language, toggleLanguage } = useLanguage();
+  const { t, language } = useLanguage();
   const home = t.home;
   const footer = t.footer;
 
@@ -43,12 +39,6 @@ export default function HomeView() {
   const [showCheckout, setShowCheckout] = useState(false);
   const [checkoutSuccess, setCheckoutSuccess] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState<'card' | 'paypal'>('card');
-  const [showPrivacy, setShowPrivacy] = useState(false);
-  const [showCopyright, setShowCopyright] = useState(false);
-  const [showContact, setShowContact] = useState(false);
-  const [showFeedback, setShowFeedback] = useState(false);
-  const [contactSuccess, setContactSuccess] = useState(false);
-  const [feedbackSuccess, setFeedbackSuccess] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
 
   const avRef = useRef<HTMLDivElement>(null);
@@ -114,18 +104,6 @@ export default function HomeView() {
   const handlePay = () => {
     setCheckoutSuccess(true);
     speak(home.voiceCheckoutSuccess);
-  };
-
-  // --- 联系表单提交 ---
-  const handleContactSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setContactSuccess(true);
-  };
-
-  // --- 反馈表单提交 ---
-  const handleFeedbackSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFeedbackSuccess(true);
   };
 
   // --- 数据准备 ---
@@ -624,98 +602,6 @@ export default function HomeView() {
         </div>
       </section>
 
-      {/* ============================ Footer ============================ */}
-      <footer className="bg-charcoal text-rice pt-16 pb-8">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-10 mb-10">
-            {/* 品牌区 */}
-            <div className="md:col-span-1">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                  <span className="text-rice font-serif font-black text-lg">悦</span>
-                </div>
-                <span className="font-serif font-black text-rice text-base">{footer.brandName}</span>
-              </div>
-              <p className="font-sans text-rice/70 text-sm leading-relaxed mb-4">{footer.tagline}</p>
-              <button
-                onClick={toggleLanguage}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-rice/30 text-rice hover:bg-rice hover:text-charcoal transition-all font-sans text-xs font-semibold"
-              >
-                <Globe className="w-3.5 h-3.5" />
-                {footer.langBtn}
-              </button>
-            </div>
-
-            {/* 链接区 */}
-            <div className="md:col-span-1">
-              <h4 className="font-serif font-bold text-rice text-sm mb-4 uppercase tracking-wide">
-                {language === 'zh' ? '快速导航' : 'Quick Links'}
-              </h4>
-              <ul className="space-y-3">
-                <li>
-                  <Link
-                    href="/privacy-policy"
-                    className="font-sans text-rice/70 hover:text-rice text-sm transition-colors"
-                  >
-                    {footer.privacy}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/terms-of-service"
-                    className="font-sans text-rice/70 hover:text-rice text-sm transition-colors"
-                  >
-                    Terms of Service
-                  </Link>
-                </li>
-                <li>
-                  <button
-                    onClick={() => setShowCopyright(true)}
-                    className="font-sans text-rice/70 hover:text-rice text-sm transition-colors"
-                  >
-                    {footer.copyright}
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => { setShowContact(true); setContactSuccess(false); }}
-                    className="font-sans text-rice/70 hover:text-rice text-sm transition-colors"
-                  >
-                    {footer.contact}
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => { setShowFeedback(true); setFeedbackSuccess(false); }}
-                    className="font-sans text-rice/70 hover:text-rice text-sm transition-colors"
-                  >
-                    {footer.feedback}
-                  </button>
-                </li>
-              </ul>
-            </div>
-
-            {/* 联系区 */}
-            <div className="md:col-span-1">
-              <h4 className="font-serif font-bold text-rice text-sm mb-4 uppercase tracking-wide">
-                {language === 'zh' ? '联系方式' : 'Contact'}
-              </h4>
-              <a
-                href={`mailto:${footer.contactEmail}`}
-                className="inline-flex items-center gap-2 font-sans text-rice/70 hover:text-rice text-sm transition-colors break-all"
-              >
-                <Mail className="w-4 h-4 flex-shrink-0" />
-                {footer.contactEmail}
-              </a>
-            </div>
-          </div>
-
-          <div className="pt-6 border-t border-rice/10 text-center">
-            <p className="font-sans text-rice/50 text-xs">© {new Date().getFullYear()} {footer.org}</p>
-          </div>
-        </div>
-      </footer>
-
       {/* ============================ 8. Video Modal 1 ============================ */}
       <AnimatePresence>
         {showVideo1 && (
@@ -1023,201 +909,6 @@ export default function HomeView() {
         )}
       </AnimatePresence>
 
-      {/* ============================ Footer Modal: Privacy ============================ */}
-      <AnimatePresence>
-        {showPrivacy && (
-          <FooterModal title={footer.privacyTitle} onClose={() => setShowPrivacy(false)}>
-            <p className="font-sans text-ink-light text-sm mb-4">{footer.privacyLead}</p>
-            <div className="space-y-4">
-              {footer.privacyPoints.map((p, i) => (
-                <div key={i} className="p-4 rounded-xl bg-rice-darker border border-border-warm">
-                  <p className="font-sans text-charcoal text-sm leading-relaxed">
-                    <span className="font-bold text-primary">{p.label}</span>
-                    {p.body}
-                  </p>
-                </div>
-              ))}
-            </div>
-            <button
-              onClick={() => setShowPrivacy(false)}
-              className="w-full mt-5 py-3 rounded-full bg-primary hover:bg-primary-hover text-rice font-sans font-bold text-sm transition-colors"
-            >
-              {footer.privacyClose}
-            </button>
-          </FooterModal>
-        )}
-      </AnimatePresence>
-
-      {/* ============================ Footer Modal: Copyright ============================ */}
-      <AnimatePresence>
-        {showCopyright && (
-          <FooterModal title={footer.copyrightTitle} onClose={() => setShowCopyright(false)}>
-            <p className="font-sans text-ink-light text-sm mb-4">{footer.copyrightLead}</p>
-            <div className="space-y-4">
-              {footer.copyrightPoints.map((p, i) => (
-                <div key={i} className="p-4 rounded-xl bg-rice-darker border border-border-warm">
-                  <p className="font-sans text-charcoal text-sm leading-relaxed">
-                    <span className="font-bold text-primary">{p.label}</span>
-                    {p.body}
-                  </p>
-                </div>
-              ))}
-            </div>
-            <button
-              onClick={() => setShowCopyright(false)}
-              className="w-full mt-5 py-3 rounded-full bg-primary hover:bg-primary-hover text-rice font-sans font-bold text-sm transition-colors"
-            >
-              {footer.copyrightClose}
-            </button>
-          </FooterModal>
-        )}
-      </AnimatePresence>
-
-      {/* ============================ Footer Modal: Contact ============================ */}
-      <AnimatePresence>
-        {showContact && (
-          <FooterModal title={footer.contactTitle} onClose={() => { setShowContact(false); setContactSuccess(false); }}>
-            {!contactSuccess ? (
-              <>
-                <p className="font-sans text-ink-light text-sm mb-4">{footer.contactDesc}</p>
-                <form onSubmit={handleContactSubmit} className="space-y-4">
-                  <div>
-                    <label className="block font-sans text-xs font-semibold text-charcoal mb-1.5">
-                      {footer.contactNameLabel}
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder={footer.contactNamePlaceholder}
-                      className="w-full px-4 py-2.5 rounded-xl border border-border-warm bg-rice font-sans text-sm text-charcoal focus:outline-none focus:border-primary transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label className="block font-sans text-xs font-semibold text-charcoal mb-1.5">
-                      {footer.contactEmailLabel}
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="parent@example.com"
-                      className="w-full px-4 py-2.5 rounded-xl border border-border-warm bg-rice font-sans text-sm text-charcoal focus:outline-none focus:border-primary transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label className="block font-sans text-xs font-semibold text-charcoal mb-1.5">
-                      {footer.contactMsgLabel}
-                    </label>
-                    <textarea
-                      required
-                      rows={4}
-                      placeholder={footer.contactMsgPlaceholder}
-                      className="w-full px-4 py-2.5 rounded-xl border border-border-warm bg-rice font-sans text-sm text-charcoal focus:outline-none focus:border-primary transition-colors resize-none"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full py-3 rounded-full bg-primary hover:bg-primary-hover text-rice font-sans font-bold text-sm transition-colors flex items-center justify-center gap-2"
-                  >
-                    <Send className="w-4 h-4" />
-                    {footer.contactSubmit}
-                  </button>
-                </form>
-                <p className="font-sans text-ink-light text-xs text-center mt-3">
-                  <Mail className="w-3.5 h-3.5 inline mr-1" />
-                  {footer.contactEmail}
-                </p>
-              </>
-            ) : (
-              <div className="text-center py-6">
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: 'spring', damping: 15 }}
-                  className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center mx-auto mb-4"
-                >
-                  <Check className="w-7 h-7 text-rice" />
-                </motion.div>
-                <h3 className="font-serif font-black text-charcoal text-lg mb-2">
-                  {footer.contactSuccessTitle}
-                </h3>
-                <p className="font-sans text-ink-light text-sm mb-5">{footer.contactSuccessDesc}</p>
-                <button
-                  onClick={() => { setShowContact(false); setContactSuccess(false); }}
-                  className="px-6 py-2.5 rounded-full bg-primary hover:bg-primary-hover text-rice font-sans font-bold text-sm transition-colors"
-                >
-                  {footer.contactClose}
-                </button>
-              </div>
-            )}
-          </FooterModal>
-        )}
-      </AnimatePresence>
-
-      {/* ============================ Footer Modal: Feedback ============================ */}
-      <AnimatePresence>
-        {showFeedback && (
-          <FooterModal title={footer.feedbackTitle} onClose={() => { setShowFeedback(false); setFeedbackSuccess(false); }}>
-            {!feedbackSuccess ? (
-              <>
-                <p className="font-sans text-ink-light text-sm mb-4">{footer.feedbackDesc}</p>
-                <form onSubmit={handleFeedbackSubmit} className="space-y-4">
-                  <div>
-                    <label className="block font-sans text-xs font-semibold text-charcoal mb-1.5">
-                      {footer.feedbackEmailLabel}
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="parent@example.com"
-                      className="w-full px-4 py-2.5 rounded-xl border border-border-warm bg-rice font-sans text-sm text-charcoal focus:outline-none focus:border-primary transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label className="block font-sans text-xs font-semibold text-charcoal mb-1.5">
-                      {footer.feedbackContentLabel}
-                    </label>
-                    <textarea
-                      required
-                      rows={5}
-                      placeholder={footer.feedbackContentPlaceholder}
-                      className="w-full px-4 py-2.5 rounded-xl border border-border-warm bg-rice font-sans text-sm text-charcoal focus:outline-none focus:border-primary transition-colors resize-none"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full py-3 rounded-full bg-secondary hover:bg-secondary-hover text-rice font-sans font-bold text-sm transition-colors flex items-center justify-center gap-2"
-                  >
-                    <MessageSquare className="w-4 h-4" />
-                    {footer.feedbackSubmit}
-                  </button>
-                </form>
-              </>
-            ) : (
-              <div className="text-center py-6">
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: 'spring', damping: 15 }}
-                  className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center mx-auto mb-4"
-                >
-                  <Check className="w-7 h-7 text-rice" />
-                </motion.div>
-                <h3 className="font-serif font-black text-charcoal text-lg mb-2">
-                  {footer.feedbackSuccessTitle}
-                </h3>
-                <p className="font-sans text-ink-light text-sm mb-5">{footer.feedbackSuccessDesc}</p>
-                <button
-                  onClick={() => { setShowFeedback(false); setFeedbackSuccess(false); }}
-                  className="px-6 py-2.5 rounded-full bg-secondary hover:bg-secondary-hover text-rice font-sans font-bold text-sm transition-colors"
-                >
-                  {footer.feedbackClose}
-                </button>
-              </div>
-            )}
-          </FooterModal>
-        )}
-      </AnimatePresence>
-
       {/* ============================ Toast 提示 ============================ */}
       <AnimatePresence>
         {toast && (
@@ -1236,40 +927,3 @@ export default function HomeView() {
   );
 }
 
-/* ============================ 子组件：Footer 弹窗容器 ============================ */
-function FooterModal({
-  title,
-  onClose,
-  children,
-}: {
-  title: string;
-  onClose: () => void;
-  children: React.ReactNode;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-charcoal/80 backdrop-blur-sm"
-      onClick={onClose}
-    >
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 10 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 10 }}
-        transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-        className="bg-rice rounded-3xl max-w-lg w-full overflow-hidden premium-shadow max-h-[90vh] overflow-y-auto"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-center justify-between px-6 py-4 border-b border-border-warm sticky top-0 bg-rice z-10">
-          <h3 className="font-serif font-bold text-charcoal text-base">{title}</h3>
-          <button onClick={onClose} className="p-1 hover:bg-rice-darker rounded-full transition-colors">
-            <X className="w-5 h-5 text-ink-light" />
-          </button>
-        </div>
-        <div className="p-6">{children}</div>
-      </motion.div>
-    </motion.div>
-  );
-}
