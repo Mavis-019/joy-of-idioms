@@ -80,7 +80,7 @@ export const translations = {
       adv3Title: '顶级东方美育｜学成语，更养高阶国风审美',
       adv3Desc: '拒绝廉价饱和卡通画风，采用极简高级的正统国风基调。百套原创雅致国风艺术画面，沉浸式还原东方美学意境。让孩子日积月累塑造高级审美，涵养东方文化审美底蕴。',
       adv4Title: '全球东方智慧｜赋予孩子一生受用的底蕴与格局',
-      adv4Desc: '不止于字词背诵，融合传统国学智慧与全球普世价值观。以双语情景解析融合东方思维的处世哲学、情商格局。培养扎根中华文脉、高情商和适配全球竞争的华裔少年',
+      adv4Desc: '不止于字词背诵，融合传统国学智慧与全球普世价值观。以双语情景解析融合东方思维的处世哲学、情商格局。培养扎根中华文脉、高情商和适配全球竞争的华裔少年。',
 
       themesTitle: '四大核心主题成语体系（共100节精品课）',
       themesSubtitle: '层层递进的东方智慧，给孩子受益一生的全局视野。',
@@ -320,6 +320,9 @@ export const translations = {
       // --- Courses tab ---
       freePreviewBadge: '免费试看',
       studyNavTitle: '学习导航',
+      studyNavDesc: '共 100 集精美国风成语视频课，前 2 集开放免费试看；购买全套课程后，解锁全部 100 集内容。',
+      lockedNoticeText: '本集属于付费内容。购买全套课程，解锁全部 100 集成语视频。',
+      lockedNoticeBtn: '前往解锁全套课程',
       themeLabel: '主题 0{id}',
       themeUnlocked: '已点亮',
 
@@ -386,6 +389,9 @@ export const translations = {
       // --- Courses tab ---
       freePreviewBadge: 'Free Demo',
       studyNavTitle: 'Learning Navigation',
+      studyNavDesc: '100 beautifully styled Chinese idiom video lessons in total. The first 2 episodes are free to preview. Purchase the full package to unlock all 100 lessons.',
+      lockedNoticeText: 'This episode is premium content. Purchase the full package to unlock all 100 idiom videos.',
+      lockedNoticeBtn: 'Unlock Full Course',
       themeLabel: 'Theme 0{id}',
       themeUnlocked: 'Unlocked',
 

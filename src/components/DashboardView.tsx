@@ -17,6 +17,7 @@ import {
   Check,
   Settings,
   BookOpen,
+  Lock,
   RotateCcw,
   Sparkles,
   ChevronRight,
@@ -57,6 +58,7 @@ export default function DashboardView() {
   const [idiomStatus, setIdiomStatus] = useState<Record<string, IdiomStatus>>({});
   const [highlightedIdiomId, setHighlightedIdiomId] = useState<string | null>(null);
   const [showIdiomModal, setShowIdiomModal] = useState(false);
+  const [showUnlockNotice, setShowUnlockNotice] = useState(false);
   const [showCheckout, setShowCheckout] = useState(false);
   const [isPremium, setIsPremium] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
@@ -132,11 +134,17 @@ export default function DashboardView() {
     [effectiveStatus]
   );
 
-  /* ---------------- Idiom card click ---------------- */
+  /* ---------------- Idiom card click ----------------
+     免费试看集（盲人摸象、守株待兔）：打开课程详情弹窗
+     其余付费集：不加载故事内容，直接弹出购买解锁提示 */
   const handleIdiomClick = (idiom: IdiomItem) => {
     setHighlightedIdiomId(null);
-    setSelectedIdiom(idiom);
-    setShowIdiomModal(true);
+    if (FREE_PREVIEW_IDS.has(idiom.id)) {
+      setSelectedIdiom(idiom);
+      setShowIdiomModal(true);
+    } else {
+      setShowUnlockNotice(true);
+    }
   };
 
   /* ---------------- Speech synthesis（仅弹窗内播放器手动触发） ---------------- */
@@ -296,12 +304,17 @@ export default function DashboardView() {
           {/* ---------- Courses Tab ---------- */}
           {activeTab === 'courses' && (
             <div className="space-y-6">
-              {/* 学习导航（醒目标题） */}
-              <div className="flex items-center gap-3">
-                <span className="w-1.5 h-7 md:h-8 rounded-full bg-gradient-to-b from-primary to-tertiary" />
-                <h2 className="font-serif text-xl md:text-2xl font-black text-charcoal tracking-wide">
-                  {d.studyNavTitle}
-                </h2>
+              {/* 学习导航（醒目标题 + 全局说明） */}
+              <div className="space-y-2">
+                <div className="flex items-center gap-3">
+                  <span className="w-1.5 h-7 md:h-8 rounded-full bg-gradient-to-b from-primary to-tertiary" />
+                  <h2 className="font-serif text-xl md:text-2xl font-black text-charcoal tracking-wide">
+                    {d.studyNavTitle}
+                  </h2>
+                </div>
+                <p className="font-sans text-xs md:text-sm text-ink-light leading-relaxed pl-[1.125rem]">
+                  {d.studyNavDesc}
+                </p>
               </div>
 
               {/* Theme sections */}
@@ -635,7 +648,45 @@ export default function DashboardView() {
         )}
       </AnimatePresence>
 
-      {/* ============ 9. 统一结账弹窗（跳转 Lemon Squeezy 托管结算） ============ */}
+      {/* ============ 9. 付费内容解锁提示弹窗（点击非试看课程卡片时弹出） ============ */}
+      <AnimatePresence>
+        {showUnlockNotice && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[95] bg-charcoal/70 backdrop-blur-sm flex items-center justify-center p-4"
+            onClick={() => setShowUnlockNotice(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-rice rounded-2xl premium-shadow max-w-sm w-full p-6 md:p-8 text-center space-y-5"
+            >
+              <div className="w-14 h-14 mx-auto rounded-full bg-primary/10 flex items-center justify-center">
+                <Lock className="w-7 h-7 text-primary" />
+              </div>
+              <p className="font-serif text-base md:text-lg font-bold text-charcoal leading-relaxed">
+                {d.lockedNoticeText}
+              </p>
+              <button
+                onClick={() => {
+                  setShowUnlockNotice(false);
+                  setShowCheckout(true);
+                }}
+                className="w-full py-3 rounded-full bg-primary hover:bg-primary-hover text-rice font-sans font-bold text-sm shadow-lg transition-colors"
+              >
+                {d.lockedNoticeBtn}
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ============ 10. 统一结账弹窗（跳转 Lemon Squeezy 托管结算） ============ */}
       <CheckoutModal open={showCheckout} onClose={() => setShowCheckout(false)} />
     </div>
   );
