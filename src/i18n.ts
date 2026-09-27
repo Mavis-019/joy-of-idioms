@@ -33,7 +33,7 @@ export const translations = {
       copyright: '海外版权说明',
       contact: '联系我们',
       feedback: '意见反馈',
-      org: '华夏童蒙美育版权所有',
+      org: 'Joy of Idioms.',
     },
     en: {
       brandName: 'JOY OF IDIOMS (悦读成语)',
@@ -43,7 +43,7 @@ export const translations = {
       copyright: 'Overseas Copyright',
       contact: 'Contact Us',
       feedback: 'Opinion Feedback',
-      org: 'Diaspora Chinese Kids Aesthetic Inc.',
+      org: 'Joy of Idioms.',
     },
   },
 

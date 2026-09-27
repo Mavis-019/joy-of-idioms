@@ -48,6 +48,14 @@ const STORAGE_KEYS = {
 /** 前两课免费试看的成语 ID */
 const FREE_PREVIEW_IDS = new Set(['mangrenmoxiang_item', 'shouzhudaitu_item']);
 
+/* 免费试看集的 Bunny Stream 视频源（与首页试看专区完全一致） */
+const FREE_PREVIEW_VIDEOS: Record<string, string> = {
+  mangrenmoxiang_item:
+    'https://player.mediadelivery.net/embed/753687/5d814539-1939-4308-b65e-1777370bf4ca',
+  shouzhudaitu_item:
+    'https://player.mediadelivery.net/embed/753687/51f24434-97b3-4541-b4c9-6a392bd3bdef',
+};
+
 export default function DashboardView() {
   const { t, language } = useLanguage();
   const d = t.dashboard as Record<string, string>;
@@ -559,7 +567,19 @@ export default function DashboardView() {
                   {language === 'zh' ? selectedIdiom.zhDefinition : selectedIdiom.enDefinition}
                 </p>
 
-                {/* Voice player */}
+                {/* 免费试看集：与首页试看专区一致的真实视频；其余集保留原声播放器 */}
+                {FREE_PREVIEW_VIDEOS[selectedIdiom.id] ? (
+                  <div className="relative aspect-video rounded-xl overflow-hidden bg-rice-darker">
+                    <iframe
+                      src={`${FREE_PREVIEW_VIDEOS[selectedIdiom.id]}?autoplay=true&loop=false&muted=false&preload=true&responsive=true&quality=1080p`}
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full border-0"
+                      allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;fullscreen;"
+                      allowFullScreen
+                      title={selectedIdiom.name}
+                    />
+                  </div>
+                ) : (
                 <div className="bg-rice-darker rounded-xl p-4 space-y-2">
                   <div className="flex items-center gap-3">
                     <button
@@ -596,6 +616,7 @@ export default function DashboardView() {
                     </div>
                   </div>
                 </div>
+                )}
 
                 {/* Story text */}
                 <div className="space-y-2">
