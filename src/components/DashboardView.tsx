@@ -1,7 +1,7 @@
 /**
  * DashboardView 组件 — 付费用户个人中心
  * 包含：顶部解锁横幅、欢迎卡片、2 Tab 导航（课程/设置）
- * 课程 Tab：学习导航、成语卡片网格、成语故事弹窗、语音朗读
+ * 课程 Tab：学习导航、成语卡片网格、免费试看视频弹窗（与首页试看专区完全一致）
  * 设置 Tab：孩子档案、语音语速、拼音开关
  * 结账弹窗：统一跳转 Lemon Squeezy 托管结算
  */
@@ -9,7 +9,6 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Play,
@@ -18,7 +17,6 @@ import {
   Settings,
   BookOpen,
   Lock,
-  RotateCcw,
   Sparkles,
   ChevronRight,
 } from 'lucide-react';
@@ -48,28 +46,20 @@ const STORAGE_KEYS = {
 /** 前两课免费试看的成语 ID */
 const FREE_PREVIEW_IDS = new Set(['mangrenmoxiang_item', 'shouzhudaitu_item']);
 
-/* 免费试看集的 Bunny Stream 视频源（与首页试看专区完全一致） */
-const FREE_PREVIEW_VIDEOS: Record<string, string> = {
-  mangrenmoxiang_item:
-    'https://player.mediadelivery.net/embed/753687/5d814539-1939-4308-b65e-1777370bf4ca',
-  shouzhudaitu_item:
-    'https://player.mediadelivery.net/embed/753687/51f24434-97b3-4541-b4c9-6a392bd3bdef',
-};
-
 export default function DashboardView() {
   const { t, language } = useLanguage();
   const d = t.dashboard as Record<string, string>;
+  const home = t.home;
 
   /* ---------------- State ---------------- */
   const [activeTab, setActiveTab] = useState<TabKey>('courses');
-  const [selectedIdiom, setSelectedIdiom] = useState<IdiomItem | null>(null);
   const [idiomStatus, setIdiomStatus] = useState<Record<string, IdiomStatus>>({});
   const [highlightedIdiomId, setHighlightedIdiomId] = useState<string | null>(null);
-  const [showIdiomModal, setShowIdiomModal] = useState(false);
+  /* 免费试看视频弹窗：v1=盲人摸象 v2=守株待兔（与首页试看专区完全一致） */
+  const [showPreviewVideo, setShowPreviewVideo] = useState<'v1' | 'v2' | null>(null);
   const [showUnlockNotice, setShowUnlockNotice] = useState(false);
   const [showCheckout, setShowCheckout] = useState(false);
   const [isPremium, setIsPremium] = useState(false);
-  const [toast, setToast] = useState<string | null>(null);
   const [childProfile, setChildProfile] = useState<ChildProfile>({
     name: d.defaultUserName,
     age: '6',
@@ -77,7 +67,6 @@ export default function DashboardView() {
   });
   const [speechRate, setSpeechRate] = useState<number>(1.0);
   const [pinyinToggle, setPinyinToggle] = useState(true);
-  const [isSpeaking, setIsSpeaking] = useState(false);
 
   /* ---------------- Hydrate from localStorage ---------------- */
   useEffect(() => {
@@ -122,12 +111,6 @@ export default function DashboardView() {
     localStorage.setItem(STORAGE_KEYS.premium, String(isPremium));
   }, [isPremium]);
 
-  /* ---------------- Toast helper ---------------- */
-  const showToast = (msg: string) => {
-    setToast(msg);
-    window.setTimeout(() => setToast(null), 2200);
-  };
-
   /* ---------------- Computed: effective idiom status ---------------- */
   const effectiveStatus = useMemo<Record<string, IdiomStatus>>(() => {
     const result: Record<string, IdiomStatus> = {};
@@ -137,67 +120,18 @@ export default function DashboardView() {
     return result;
   }, [idiomStatus]);
 
-  const completedCount = useMemo(
-    () => Object.values(effectiveStatus).filter((s) => s === 'completed').length,
-    [effectiveStatus]
-  );
-
   /* ---------------- Idiom card click ----------------
-     免费试看集（盲人摸象、守株待兔）：打开课程详情弹窗
+     免费试看集（盲人摸象、守株待兔）：打开与首页试看专区完全一致的视频弹窗
      其余付费集：不加载故事内容，直接弹出购买解锁提示 */
   const handleIdiomClick = (idiom: IdiomItem) => {
     setHighlightedIdiomId(null);
-    if (FREE_PREVIEW_IDS.has(idiom.id)) {
-      setSelectedIdiom(idiom);
-      setShowIdiomModal(true);
+    if (idiom.id === 'mangrenmoxiang_item') {
+      setShowPreviewVideo('v1');
+    } else if (idiom.id === 'shouzhudaitu_item') {
+      setShowPreviewVideo('v2');
     } else {
       setShowUnlockNotice(true);
     }
-  };
-
-  /* ---------------- Speech synthesis（仅弹窗内播放器手动触发） ---------------- */
-  const speakText = (text: string) => {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
-      showToast(d.toastSpeechUnsupported);
-      return;
-    }
-    window.speechSynthesis.cancel();
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.lang = language === 'zh' ? 'zh-CN' : 'en-US';
-    utter.rate = speechRate;
-    utter.onstart = () => setIsSpeaking(true);
-    utter.onend = () => setIsSpeaking(false);
-    utter.onerror = () => setIsSpeaking(false);
-    window.speechSynthesis.speak(utter);
-  };
-
-  const stopSpeaking = () => {
-    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-    }
-    setIsSpeaking(false);
-  };
-
-  /* ---------------- Mark mastered / unlearned ---------------- */
-  const markMastered = (idiomId: string) => {
-    setIdiomStatus((prev) => ({ ...prev, [idiomId]: 'completed' }));
-    showToast(d.toastIdiomCompleted);
-    if (completedCount + 1 >= IDIOMS_LIST.length) {
-      showToast(d.toastAllCompleted);
-    }
-    setShowIdiomModal(false);
-    stopSpeaking();
-  };
-
-  const markUnlearned = (idiomId: string) => {
-    setIdiomStatus((prev) => {
-      const next = { ...prev };
-      delete next[idiomId];
-      return next;
-    });
-    showToast(d.toastProgressReset);
-    setShowIdiomModal(false);
-    stopSpeaking();
   };
 
   /* ---------------- Resume learning — 定位并高亮下一个未学成语 ---------------- */
@@ -223,20 +157,6 @@ export default function DashboardView() {
   ================================================================ */
   return (
     <div className="min-h-screen bg-rice">
-      {/* ============ Toast ============ */}
-      <AnimatePresence>
-        {toast && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed top-24 left-1/2 -translate-x-1/2 z-[100] bg-charcoal text-rice px-6 py-3 rounded-full font-sans text-sm shadow-lg"
-          >
-            {toast}
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-6 md:py-8 space-y-6 md:space-y-8">
         {/* ============ 1. Top Billing Banner (non-premium only) ============ */}
         {!isPremium && (
@@ -518,150 +438,112 @@ export default function DashboardView() {
         </div>
       </div>
 
-      {/* ============ 5. Idiom Story Modal ============ */}
+      {/* ============ 5. 免费试看视频弹窗（与首页试看专区完全一致） ============ */}
+      {/* 弹窗 1：盲人摸象 */}
       <AnimatePresence>
-        {showIdiomModal && selectedIdiom && (
+        {showPreviewVideo === 'v1' && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[90] bg-charcoal/60 backdrop-blur-sm flex items-center justify-center p-4"
-            onClick={() => {
-              setShowIdiomModal(false);
-              stopSpeaking();
-            }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-charcoal/80 backdrop-blur-sm"
+            onClick={() => setShowPreviewVideo(null)}
           >
             <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="bg-rice rounded-3xl max-w-3xl w-full overflow-hidden premium-shadow"
               onClick={(e) => e.stopPropagation()}
-              className="bg-rice rounded-2xl premium-shadow max-w-2xl w-full max-h-[90vh] overflow-y-auto"
             >
-              {/* Modal header */}
-              <div className="sticky top-0 bg-rice border-b border-border-warm px-5 md:px-7 py-4 flex items-center justify-between gap-3">
-                <div className="min-w-0">
-                  <h3 className="font-serif text-xl md:text-2xl font-black text-charcoal truncate">
-                    {selectedIdiom.name}
-                  </h3>
-                  {pinyinToggle && (
-                    <p className="font-sans text-xs text-ink-light/70">{selectedIdiom.pinyin}</p>
-                  )}
-                </div>
-                <button
-                  onClick={() => {
-                    setShowIdiomModal(false);
-                    stopSpeaking();
-                  }}
-                  className="shrink-0 w-9 h-9 rounded-full bg-rice-darker hover:bg-border-warm flex items-center justify-center transition-colors"
-                  aria-label="Close"
-                >
-                  <X className="w-4 h-4 text-charcoal" />
+              {/* 顶栏 */}
+              <div className="flex items-center justify-between px-6 py-4 bg-primary text-rice">
+                <span className="font-serif font-bold text-sm">{home.m1Topbar}</span>
+                <button onClick={() => setShowPreviewVideo(null)} className="p-1 hover:bg-rice/20 rounded-full transition-colors">
+                  <X className="w-5 h-5" />
                 </button>
               </div>
 
-              {/* Modal body */}
-              <div className="px-5 md:px-7 py-5 space-y-5">
-                <p className="font-sans text-xs text-ink-light italic">
-                  {language === 'zh' ? selectedIdiom.zhDefinition : selectedIdiom.enDefinition}
-                </p>
-
-                {/* 免费试看集：与首页试看专区一致的真实视频；其余集保留原声播放器 */}
-                {FREE_PREVIEW_VIDEOS[selectedIdiom.id] ? (
-                  <div className="relative aspect-video rounded-xl overflow-hidden bg-rice-darker">
-                    <iframe
-                      src={`${FREE_PREVIEW_VIDEOS[selectedIdiom.id]}?autoplay=true&loop=false&muted=false&preload=true&responsive=true&quality=1080p`}
-                      loading="lazy"
-                      className="absolute inset-0 w-full h-full border-0"
-                      allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;fullscreen;"
-                      allowFullScreen
-                      title={selectedIdiom.name}
-                    />
-                  </div>
-                ) : (
-                <div className="bg-rice-darker rounded-xl p-4 space-y-2">
-                  <div className="flex items-center gap-3">
-                    <button
-                      onClick={() =>
-                        isSpeaking
-                          ? stopSpeaking()
-                          : speakText(
-                              language === 'zh'
-                                ? `${selectedIdiom.name}。${selectedIdiom.story}`
-                                : `${selectedIdiom.enName}. ${selectedIdiom.translation}`
-                            )
-                      }
-                      className={`w-11 h-11 rounded-full flex items-center justify-center transition-colors ${
-                        isSpeaking ? 'bg-secondary text-rice' : 'bg-primary text-rice hover:bg-primary-hover'
-                      }`}
-                      aria-label="Play voice"
-                    >
-                      {isSpeaking ? (
-                        <span className="flex items-center gap-0.5">
-                          <span className="block w-1 h-3 bg-rice" />
-                          <span className="block w-1 h-3 bg-rice" />
-                        </span>
-                      ) : (
-                        <Play className="w-4 h-4 ml-0.5" />
-                      )}
-                    </button>
-                    <div className="min-w-0">
-                      <div className="font-sans text-xs font-bold text-charcoal">
-                        {d.modalVoiceTitle}
-                      </div>
-                      <div className="font-sans text-[10px] text-ink-light/70">
-                        {d.modalVoiceDesc}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                )}
-
-                {/* Story text */}
-                <div className="space-y-2">
-                  <h4 className="font-serif text-sm font-bold text-charcoal">
-                    {language === 'zh' ? '📖 故事原文' : '📖 Story'}
-                  </h4>
-                  <p className="font-serif text-sm md:text-base text-charcoal/85 leading-relaxed">
-                    {language === 'zh' ? selectedIdiom.story : selectedIdiom.translation}
-                  </p>
-                </div>
-
-                {/* Moral label */}
-                <div className="bg-secondary/5 border-l-4 border-secondary pl-4 py-2">
-                  <p className="font-serif text-xs md:text-sm text-charcoal/80">
-                    {d.moralLabel}
-                  </p>
-                  <p className="font-sans text-xs text-ink-light mt-1">
-                    {language === 'zh' ? selectedIdiom.zhDefinition : selectedIdiom.enDefinition}
-                  </p>
-                </div>
-
-                {/* View full episode link */}
-                <Link
-                  href={`/episodes/${selectedIdiom.id}`}
-                  className="block text-center font-sans text-xs text-primary hover:underline pt-1"
-                >
-                  {language === 'zh' ? '查看完整课程页 →' : 'View full episode →'}
-                </Link>
+              {/* 视频区 — Bunny Stream 真实视频嵌入 */}
+              <div className="relative aspect-video bg-rice-darker">
+                <iframe
+                  src="https://player.mediadelivery.net/embed/753687/5d814539-1939-4308-b65e-1777370bf4ca?autoplay=true&loop=false&muted=false&preload=true&responsive=true&quality=1080p"
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full border-0"
+                  allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;fullscreen;"
+                  allowFullScreen
+                  title={home.v1Title}
+                />
               </div>
 
-              {/* Modal footer actions */}
-              <div className="sticky bottom-0 bg-rice border-t border-border-warm px-5 md:px-7 py-4 flex flex-wrap items-center gap-2">
+              {/* 内容区 */}
+              <div className="p-6">
+                <p className="font-serif text-secondary text-sm mb-2 tracking-wide">{home.m1Pinyin}</p>
+                <h3 className="font-serif font-black text-charcoal text-2xl md:text-3xl mb-6 leading-tight">
+                  {home.v1Title}
+                </h3>
                 <button
-                  onClick={() => markUnlearned(selectedIdiom.id)}
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-full font-sans text-xs font-semibold bg-rice-darker text-ink-light hover:text-charcoal border border-border-warm"
+                  onClick={() => { setShowPreviewVideo(null); setShowCheckout(true); }}
+                  className="w-full py-3 rounded-full bg-primary hover:bg-primary-hover text-rice font-sans font-bold text-sm transition-colors"
                 >
-                  <RotateCcw className="w-3.5 h-3.5" />
-                  {d.btnMarkUnlearned}
+                  {home.videoUnlockCta}
                 </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* 弹窗 2：守株待兔 */}
+      <AnimatePresence>
+        {showPreviewVideo === 'v2' && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-charcoal/80 backdrop-blur-sm"
+            onClick={() => setShowPreviewVideo(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="bg-rice rounded-3xl max-w-3xl w-full overflow-hidden green-shadow"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* 顶栏 */}
+              <div className="flex items-center justify-between px-6 py-4 bg-secondary text-rice">
+                <span className="font-serif font-bold text-sm">{home.m2Topbar}</span>
+                <button onClick={() => setShowPreviewVideo(null)} className="p-1 hover:bg-rice/20 rounded-full transition-colors">
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* 视频区 — Bunny Stream 真实视频嵌入 */}
+              <div className="relative aspect-video bg-rice-darker">
+                <iframe
+                  src="https://player.mediadelivery.net/embed/753687/51f24434-97b3-4541-b4c9-6a392bd3bdef?autoplay=true&loop=false&muted=false&preload=true&responsive=true&quality=1080p"
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full border-0"
+                  allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;fullscreen;"
+                  allowFullScreen
+                  title={home.v2Title}
+                />
+              </div>
+
+              {/* 内容区 */}
+              <div className="p-6">
+                <p className="font-serif text-secondary text-sm mb-2 tracking-wide">{home.m2Pinyin}</p>
+                <h3 className="font-serif font-black text-charcoal text-2xl md:text-3xl mb-6 leading-tight">
+                  {home.v2Title}
+                </h3>
                 <button
-                  onClick={() => markMastered(selectedIdiom.id)}
-                  className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-4 py-2 rounded-full font-sans text-xs font-bold bg-secondary text-rice hover:bg-secondary-hover ml-auto"
+                  onClick={() => { setShowPreviewVideo(null); setShowCheckout(true); }}
+                  className="w-full py-3 rounded-full bg-secondary hover:bg-secondary-hover text-rice font-sans font-bold text-sm transition-colors"
                 >
-                  <Sparkles className="w-3.5 h-3.5" />
-                  {d.btnMarkMastered}
+                  {home.videoUnlockCta}
                 </button>
               </div>
             </motion.div>
