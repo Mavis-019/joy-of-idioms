@@ -80,7 +80,7 @@ export const translations = {
       adv3Title: '顶级东方美育｜学成语，更养高阶国风审美',
       adv3Desc: '拒绝廉价饱和卡通画风，采用极简高级的正统国风基调。百套原创雅致国风艺术画面，沉浸式还原东方美学意境。让孩子日积月累塑造高级审美，涵养东方文化审美底蕴。',
       adv4Title: '全球东方智慧｜赋予孩子一生受用的底蕴与格局',
-      adv4Desc: '不止于字词背诵，融合传统国学智慧与全球普世价值观。以双语情景解析融合东方思维的处世哲学、情商格局。帮助华裔少年寻根中华文脉，在成语智慧中汲取沟通灵感与全球视野。',
+      adv4Desc: '不止于字词背诵，融合传统国学智慧与全球普适价值观。以双语情景解析融合东方思维的处世哲学，帮助华裔少年寻根中华文脉，在成语智慧中汲取沟通灵感与全球视野。',
 
       themesTitle: '四大核心主题成语体系（共100节精品课）',
       themesSubtitle: '层层递进的东方智慧，给孩子受益一生的全局视野。',
@@ -89,7 +89,7 @@ export const translations = {
       theme2: '自我成长与探究',
       theme2Desc: '塑造面对挫折的坚毅品质与自我管理能力。在名师舒缓表达中培养百折不挠的阳光心态与自驱力。',
       theme3: '社交与人际智慧',
-      theme3Desc: '学会理解同理心、人际边界与沟通合作。在温润厚道的成语熏陶下，培养高情商的全球社交素养。',
+      theme3Desc: '学会理解同理心、人际边界与沟通合作。在温润厚道的成语熏陶下，提升健康自如的人际沟通与社交素养。',
       theme4: '高阶思维与格局',
       theme4Desc: '突破单一视角藩篱，培养全局、多角度思辨能力。让海外孩子兼具国际视野与深厚的东方智慧底蕴。',
 
@@ -104,7 +104,7 @@ export const translations = {
       review4Text: '「尝试过自学成语，内容杂乱无章，语言有门槛，孩子很抗拒。这套内容孩子能轻松跟上，最重要的是他能被吸引住，看得很专注。每天两集解放家长，大幅节省了我的时间。」',
       review4Parent: '吴爸爸 ｜ 4岁 & 8 岁双娃家长 · 奥克兰',
 
-      unlockPromoTitle: '限时特惠，一套体系完成海外孩童成语美育启蒙！',
+      unlockPromoTitle: '首发特惠，一套体系完成海外孩童成语美育启蒙！',
       btnPromoUnlock: '立即解锁完整内容',
       price: '$59.00 USD',
       originalPrice: '$99.00 USD',
@@ -188,7 +188,7 @@ export const translations = {
       adv3Title: 'Elite Eastern Aesthetics | Master Idioms while Nurturing High-Class Art Taste',
       adv3Desc: 'Rejecting cheap, high-saturation cartoon style in favor of minimalist, elegant, and orthodox national art. Hundreds of original elegant Chinese-style art illustrations restore the poetic Eastern aesthetic world, nurturing deep cultural and artistic appreciation.',
       adv4Title: 'Global Eastern Wisdom | Empowering Children with Lasting Depth & Vision',
-      adv4Desc: 'Beyond simple rote-memorization, we integrate traditional Chinese wisdom with global universal values. Through bilingual situational analysis, kids grasp Eastern philosophies of life and high-EQ mindsets. Designed to help young learners of Chinese heritage connect with their cultural roots, drawing inspiration for communication and broadening global perspectives through idiom wisdom.',
+      adv4Desc: 'Beyond simple rote-memorization, we integrate traditional Chinese wisdom with global universal values. Through bilingual situational analysis, kids grasp Eastern philosophies of life. It is designed to help young learners of Chinese heritage connect with their cultural roots, drawing inspiration for communication and broadening global perspectives through idiom wisdom.',
 
       themesTitle: 'Four Core Thematic Idiom Systems (100 Lessons)',
       themesSubtitle: 'Step-by-step Chinese philosophy, giving children a lasting broad mindset.',
@@ -197,7 +197,7 @@ export const translations = {
       theme2: 'Grit & Growth Mindset',
       theme2Desc: 'Building resilience to handle setbacks. Under Teacher Mavis\'s healing voice, children cultivate unyielding optimism and self-drive.',
       theme3: 'Social-Emotional Wisdom',
-      theme3Desc: 'Understanding empathy, boundaries, and healthy communication. Cultivating high-EQ interpersonal skills.',
+      theme3Desc: 'Understanding empathy, boundaries, and healthy communication. Cultivating healthy interpersonal and communication skills.',
       theme4: 'High-Order Strategic Thinking',
       theme4Desc: 'Breaking narrow angles to build multi-dimensional problem-solving skills. Fusing global vision with profound cultural legacy.',
 
@@ -212,7 +212,7 @@ export const translations = {
       review4Text: 'We tried self-study before, but the content was scattered and the language too difficult — my son resisted it. With this set he follows along easily and, most importantly, stays absorbed and focused. Two episodes a day frees up parents and saves me so much time.',
       review4Parent: 'Father Wu | Parent of 4 & 8-yo children, Auckland',
 
-      unlockPromoTitle: 'Limited-Time Offer: The Ultimate Idiom & Aesthetic Curriculum for Children Overseas.',
+      unlockPromoTitle: 'Special Launch Offer: The Ultimate Idiom & Aesthetic Curriculum for Children Overseas.',
       btnPromoUnlock: 'Unlock Complete Access Now',
       price: '$59.00 USD',
       originalPrice: '$99.00 USD',
@@ -268,7 +268,7 @@ export const translations = {
       productDesc: '包含：100集精美国风成语视频课，标准普通话原声讲述。一次性购买，获得课程访问权限，随时回看学习。',
       price: '$59.00 USD',
       emailLabel: '接收课程账号邮箱',
-      emailPlaceholder: 'parent@example.com',
+      emailPlaceholder: 'Enter your email address',
       emailHint: '购买后课程权益将自动绑定至此邮箱，并发送收据确认单。',
       payBtn: '前往安全结算 $59.00 USD',
       bottomNote: '支持 PayPal、Visa、Mastercard 安全支付。可查阅我们的{refundLink}了解退款申请条件。',
@@ -280,7 +280,7 @@ export const translations = {
       productDesc: 'Features 100 Chinese idiom video lessons with elegant Chinese-style visuals, narrated in standard Mandarin. One-time purchase for ongoing course access, review lessons anytime.',
       price: '$59.00 USD',
       emailLabel: 'Email for course access',
-      emailPlaceholder: 'parent@example.com',
+      emailPlaceholder: 'Enter your email address',
       emailHint: 'Your course access will be linked to this email, and your receipt will be sent here.',
       payBtn: 'Proceed to secure checkout $59.00',
       bottomNote: 'Secure payment via PayPal, Visa, Mastercard. Please view our {refundLink} for eligibility requirements.',
