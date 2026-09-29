@@ -80,7 +80,7 @@ export const translations = {
       adv3Title: '顶级东方美育｜学成语，更养高阶国风审美',
       adv3Desc: '拒绝廉价饱和卡通画风，采用极简高级的正统国风基调。百套原创雅致国风艺术画面，沉浸式还原东方美学意境。让孩子日积月累塑造高级审美，涵养东方文化审美底蕴。',
       adv4Title: '全球东方智慧｜赋予孩子一生受用的底蕴与格局',
-      adv4Desc: '不止于字词背诵，融合传统国学智慧与全球普世价值观。以双语情景解析融合东方思维的处世哲学、情商格局。培养扎根中华文脉、高情商和适配全球竞争的华裔少年。',
+      adv4Desc: '不止于字词背诵，融合传统国学智慧与全球普世价值观。以双语情景解析融合东方思维的处世哲学、情商格局。帮助华裔少年寻根中华文脉，在成语智慧中汲取沟通灵感与全球视野。',
 
       themesTitle: '四大核心主题成语体系（共100节精品课）',
       themesSubtitle: '层层递进的东方智慧，给孩子受益一生的全局视野。',
@@ -188,7 +188,7 @@ export const translations = {
       adv3Title: 'Elite Eastern Aesthetics | Master Idioms while Nurturing High-Class Art Taste',
       adv3Desc: 'Rejecting cheap, high-saturation cartoon style in favor of minimalist, elegant, and orthodox national art. Hundreds of original elegant Chinese-style art illustrations restore the poetic Eastern aesthetic world, nurturing deep cultural and artistic appreciation.',
       adv4Title: 'Global Eastern Wisdom | Empowering Children with Lasting Depth & Vision',
-      adv4Desc: 'Beyond simple rote-memorization, we integrate traditional Chinese wisdom with global universal values. Through bilingual situational analysis, kids grasp Eastern philosophies of life and high-EQ mindsets, raising children rooted in heritage and ready for global competition.',
+      adv4Desc: 'Beyond simple rote-memorization, we integrate traditional Chinese wisdom with global universal values. Through bilingual situational analysis, kids grasp Eastern philosophies of life and high-EQ mindsets. Designed to help young learners of Chinese heritage connect with their cultural roots, drawing inspiration for communication and broadening global perspectives through idiom wisdom.',
 
       themesTitle: 'Four Core Thematic Idiom Systems (100 Lessons)',
       themesSubtitle: 'Step-by-step Chinese philosophy, giving children a lasting broad mindset.',
