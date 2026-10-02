@@ -82,7 +82,7 @@ function EnglishContent() {
           </p>
           <ul className="font-sans text-ink-light text-base leading-relaxed space-y-1.5 list-disc list-inside">
             <li>Granting online access to your purchased digital courses</li>
-            <li>Verifying payment transactions and orders via Lemon Squeezy</li>
+            <li>Verifying payment transactions and orders via Paddle</li>
             <li>
               Sending essential service-related notifications regarding your
               account and purchases
@@ -102,7 +102,7 @@ function EnglishContent() {
             We never sell your personal information to third parties. We share
             necessary data only with authorized infrastructure service providers
             (including Supabase for database and authentication services, and
-            Lemon Squeezy for payment processing) to fulfill our digital services.
+            Paddle for payment processing) to fulfill our digital services.
             All service providers are bound by data protection agreements.
           </p>
           <p className="font-sans text-ink-light text-base leading-relaxed mt-3">
@@ -252,7 +252,7 @@ function ChineseContent() {
           </p>
           <ul className="font-sans text-ink-light text-base leading-relaxed space-y-1.5 list-disc list-inside">
             <li>为您开放已购买数字课程的在线访问权限</li>
-            <li>通过 Lemon Squeezy 核验支付订单与处理账单</li>
+            <li>通过 Paddle 核验支付订单与处理账单</li>
             <li>发送课程权限、账号状态与服务相关的必要通知</li>
             <li>保障网站安全与正常技术运行</li>
           </ul>
@@ -265,8 +265,8 @@ function ChineseContent() {
           </h2>
           <p className="font-sans text-ink-light text-base leading-relaxed">
             我们绝不会向第三方出售您的个人信息。我们仅向授权的基础设施及服务提供商共享必要数据（包括提供数据库与身份验证服务的
-            Supabase、提供支付处理的 Lemon
-            Squeezy），以完成数字服务的交付。上述服务商均受数据保护协议约束。
+            Supabase、提供支付处理的
+            Paddle），以完成数字服务的交付。上述服务商均受数据保护协议约束。
           </p>
           <p className="font-sans text-ink-light text-base leading-relaxed mt-3">
             您的数据可能会在您所在国家 / 地区之外的安全服务器上进行传输与存储。

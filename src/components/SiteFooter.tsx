@@ -32,7 +32,7 @@ export default function SiteFooter() {
     { href: '/about', label: isZh ? '关于我们' : 'About' },
     { href: '/privacy-policy', label: footer.privacy },
     { href: '/terms-of-service', label: isZh ? '服务条款' : 'Terms of Service' },
-    { href: '/refund-policy', label: isZh ? '退款政策' : 'Refund Policy' },
+    { href: '/refund', label: isZh ? '退款政策' : 'Refund Policy' },
   ];
 
   const linkClass =

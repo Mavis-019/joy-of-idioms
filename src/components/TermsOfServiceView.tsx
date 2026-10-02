@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import LegalLayout from '@/components/LegalLayout';
 import { useLanguage } from '@/lib/language-context';
 
@@ -90,36 +89,25 @@ function EnglishContent() {
           <h2 className="font-serif font-bold text-charcoal text-xl md:text-2xl mb-3">
             3. Refund Policy
           </h2>
-          <p className="font-sans text-ink-light text-base leading-relaxed mb-3">
-            Because our products consist of instantly accessible digital content,
-            our refund conditions are strictly defined as follows:
+          <p className="font-sans text-ink-light text-base leading-relaxed">
+            This is a one-time digital educational course. Purchasers have a
+            14-day cooling-off period after purchase. Refund requests within 14
+            days will be reviewed. Once course content is fully accessed,
+            refunds may be declined. All payments, refunds and disputes are
+            handled by Paddle as Merchant of Record, subject to Paddle&rsquo;s
+            buyer terms.
           </p>
-          <ul className="font-sans text-ink-light text-base leading-relaxed space-y-1.5 list-disc list-inside">
-            <li>
-              You may request a full refund within 7 calendar days of purchase,
-              provided that you have not accessed or played any video content
-              within the paid course library.
-            </li>
-            <li>
-              Publicly accessible free demo samples on our website do not count as
-              paid-course content and will not affect your refund eligibility.
-            </li>
-            <li>
-              Once any lesson video in the paid course library has been accessed or
-              played, the digital service is deemed delivered, and no refunds will
-              be offered.
-            </li>
-          </ul>
           <p className="font-sans text-ink-light text-base leading-relaxed mt-4">
-            Payment processing, invoicing, and refund fulfillment are handled
-            exclusively by our authorized Merchant of Record (MoR), Lemon Squeezy.
-            For complete details, please review our{' '}
-            <Link
-              href="/refund-policy"
+            Payments are processed by Paddle, acting as Merchant of Record.
+            Paddle handles global tax collection, payment processing, fraud
+            protection, invoices and consumer dispute resolution for this
+            purchase. For complete details, please review our{' '}
+            <a
+              href="https://joyofidioms.com/refund"
               className="text-primary font-semibold hover:underline"
             >
               Refund Policy
-            </Link>
+            </a>
             .
           </p>
         </section>
@@ -256,30 +244,20 @@ function ChineseContent() {
           <h2 className="font-serif font-bold text-charcoal text-xl md:text-2xl mb-3">
             3. 退款政策
           </h2>
-          <p className="font-sans text-ink-light text-base leading-relaxed mb-3">
-            鉴于本产品为即时访问的数字内容，我们的退款规则如下：
+          <p className="font-sans text-ink-light text-base leading-relaxed">
+            本产品为一次性购买的数字教育课程。购买后享有 14 天冷静期（cooling-off
+            period）。14 天内提交的退款申请将予以审核。课程内容一经完整访问，退款申请可能被拒绝。所有支付、退款与争议均由作为记录商家（Merchant
+            of Record）的 Paddle 处理，并受 Paddle 买家条款约束。
           </p>
-          <ul className="font-sans text-ink-light text-base leading-relaxed space-y-1.5 list-disc list-inside">
-            <li>
-              购买后 7 个自然日内，且您尚未播放或访问付费课程库内的任何视频内容时，可申请全额退款。
-            </li>
-            <li>
-              网站公开展示的免费 Demo
-              演示视频不属于付费课程库内容，试看 Demo 不影响退款资格。
-            </li>
-            <li>
-              付费课程库内任意一节视频一经播放或访问，即视为数字服务已开始交付，不再支持退款。
-            </li>
-          </ul>
           <p className="font-sans text-ink-light text-base leading-relaxed mt-4">
-            支付处理、订单开具与退款由我们的授权记录商家（Merchant of
-            Record）Lemon Squeezy 统一负责完成。完整的退款细则请查阅我们的{' '}
-            <Link
-              href="/refund-policy"
+            支付由 Paddle 作为记录商家（Merchant of Record）处理。Paddle
+            负责本笔交易的全球税务征收、支付处理、欺诈防护、发票开具与消费者争议解决。完整的退款细则请查阅我们的{' '}
+            <a
+              href="https://joyofidioms.com/refund"
               className="text-primary font-semibold hover:underline"
             >
               退款政策
-            </Link>
+            </a>
             。
           </p>
         </section>

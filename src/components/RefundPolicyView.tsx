@@ -9,7 +9,7 @@ const SITE_URL = 'https://joyofidioms.com';
 /**
  * RefundPolicyView — 退款政策页面（中英双语・最终定稿版）
  * 英文为具法律约束力的正式文本；中文仅供阅读参考。
- * 7 个自然日内未访问/观看付费课程视频可全额退款；一经观看不予退款。
+ * 14 天冷静期内可申请退款；课程内容一经完整访问，退款可能被拒绝。
  */
 export default function RefundPolicyView() {
   const { language } = useLanguage();
@@ -62,20 +62,12 @@ function EnglishContent() {
             Eligibility for Refund
           </h2>
           <p className="font-sans text-ink-light text-base leading-relaxed">
-            You may request a full refund only within 7 calendar days after your
-            purchase, provided that you have not accessed or viewed{' '}
-            <strong className="text-charcoal">
-              any video content within the paid course library
-            </strong>
-            .
-          </p>
-          <p className="font-sans text-ink-light text-base leading-relaxed mt-3">
-            Once any lesson video from the paid course library has been accessed or
-            watched, no refund will be available.{' '}
-            <strong className="text-charcoal">
-              Public free demo samples available on our website do not count as
-              paid-course content and will not affect your refund eligibility.
-            </strong>
+            This is a one-time digital educational course. Purchasers have a
+            14-day cooling-off period after purchase. Refund requests within 14
+            days will be reviewed. Once course content is fully accessed,
+            refunds may be declined. All payments, refunds and disputes are
+            handled by Paddle as Merchant of Record, subject to Paddle&rsquo;s
+            buyer terms.
           </p>
         </section>
 
@@ -106,11 +98,8 @@ function EnglishContent() {
             Non-Refundable Scenarios
           </h2>
           <ul className="font-sans text-ink-light text-base leading-relaxed space-y-1.5 list-disc list-inside">
-            <li>More than 7 calendar days have passed since your purchase.</li>
-            <li>
-              You have accessed or viewed any video content within the paid course
-              library.
-            </li>
+            <li>More than 14 calendar days have passed since your purchase.</li>
+            <li>The course content has been fully accessed.</li>
             <li>Partial refunds are not offered.</li>
           </ul>
         </section>
@@ -161,15 +150,9 @@ function ChineseContent() {
             退款资格
           </h2>
           <p className="font-sans text-ink-light text-base leading-relaxed">
-            仅在购买后 7 个自然日内，且您尚未访问、观看
-            <strong className="text-charcoal">付费课程内的任何视频内容</strong>
-            时，您方可申请全额退款。
-          </p>
-          <p className="font-sans text-ink-light text-base leading-relaxed mt-3">
-            付费课程中任意一节课件视频一经访问或观看，即不再支持退款。
-            <strong className="text-charcoal">
-              网站公开的免费演示 Demo 不属于付费课程内容，不影响退款资格。
-            </strong>
+            本产品为一次性购买的数字教育课程。购买后享有 14 天冷静期（cooling-off
+            period）。14 天内提交的退款申请将予以审核。课程内容一经完整访问，退款申请可能被拒绝。所有支付、退款与争议均由作为记录商家（Merchant
+            of Record）的 Paddle 处理，并受 Paddle 买家条款约束。
           </p>
         </section>
 
@@ -197,8 +180,8 @@ function ChineseContent() {
             不予退款的情形
           </h2>
           <ul className="font-sans text-ink-light text-base leading-relaxed space-y-1.5 list-disc list-inside">
-            <li>自购买之日起已超过 7 天。</li>
-            <li>您已访问或观看付费课程内任意视频内容。</li>
+            <li>自购买之日起已超过 14 天。</li>
+            <li>您已完整访问课程内容。</li>
             <li>不支持部分退款。</li>
           </ul>
         </section>
