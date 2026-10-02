@@ -11,7 +11,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Script from 'next/script';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -39,11 +39,22 @@ export default function CheckoutModal({ open, onClose }: { open: boolean; onClos
 
   const [noteBefore, noteAfter] = c.bottomNote.split('{refundLink}');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // paddle.js 异步注入 window.Paddle 后尽早完成 Initialize（Paddle.Initialize
+  // 内部还需异步加载结账资源，必须留出就绪时间；next/script 的 onLoad 在
+  // 生产模式下可能不触发，故用轮询兜底，initializePaddle 自身幂等）
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (initializePaddle()) clearInterval(timer);
+    }, 300);
+    return () => clearInterval(timer);
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) return;
-    // 唤起 Paddle overlay 结账弹窗（沙盒阶段：test_ 客户端 token + 沙盒 priceId）
-    openPaddleCheckout(email);
+    // 唤起 Paddle overlay 结账弹窗（沙盒阶段：test_ 客户端 token + 沙盒 priceId；
+    // 内部自动兜底等待 paddle.js 加载并完成初始化）
+    await openPaddleCheckout(email);
   };
 
   return (
