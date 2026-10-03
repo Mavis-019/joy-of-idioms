@@ -288,6 +288,48 @@ export const translations = {
     },
   },
 
+  /* ============================ 定价页（/pricing，含 Paddle 验证期合规提示） ============================ */
+  pricing: {
+    zh: {
+      title: '课程定价',
+      badge: 'PRICING',
+      backLabel: '返回首页',
+      productTitle: '「Joy of Idioms（悦读成语）」100课精品成语视频课全套',
+      productDesc: '包含：100集精美国风成语视频课，标准普通话原声讲述。一次性购买，获得课程访问权限，随时回看学习。',
+      feature1: '100 集精美国风成语视频课',
+      feature2: '标准普通话原声讲述',
+      feature3: '前 2 集免费试看',
+      feature4: '一次性买断，无订阅费用',
+      priceLabel: '首发特惠价',
+      price: '$59.00 USD',
+      originalPrice: '$99.00 USD',
+      // 合规提示（Paddle 支付服务商验证期要求，英文原文展示，中英文页面均显示）
+      notice:
+        'This website is undergoing payment provider verification. Checkout is in test mode; no real payment will be processed at this stage.',
+      unlockBtn: '解锁完整体系',
+      priceNote: '支持 PayPal、Visa、Mastercard 安全支付',
+    },
+    en: {
+      title: 'Pricing',
+      badge: 'PRICING',
+      backLabel: 'Back to Home',
+      productTitle: 'Joy of Idioms — 100-Lesson Premium Chinese Idiom Video Course',
+      productDesc: 'Features 100 Chinese idiom video lessons with elegant Chinese-style visuals, narrated in standard Mandarin. One-time purchase for ongoing course access, review lessons anytime.',
+      feature1: '100 Chinese idiom video lessons',
+      feature2: 'Narrated in standard Mandarin',
+      feature3: 'First 2 lessons free to preview',
+      feature4: 'One-time purchase, no subscription',
+      priceLabel: 'Special Launch Price',
+      price: '$59.00 USD',
+      originalPrice: '$99.00 USD',
+      // Compliance notice (Paddle payment provider verification, exact English wording on both languages)
+      notice:
+        'This website is undergoing payment provider verification. Checkout is in test mode; no real payment will be processed at this stage.',
+      unlockBtn: 'Unlock Complete Access',
+      priceNote: 'Secure payment via PayPal, Visa, Mastercard',
+    },
+  },
+
   /* ============================ DashboardView ============================ */
   dashboard: {
     zh: {
@@ -441,6 +483,7 @@ export function getT(lang: Language) {
     footer: translations.footer[lang],
     home: translations.home[lang],
     checkout: translations.checkout[lang],
+    pricing: translations.pricing[lang],
     dashboard: translations.dashboard[lang] as Record<string, string>,
   };
 }

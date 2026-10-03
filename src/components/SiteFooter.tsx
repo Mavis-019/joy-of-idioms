@@ -30,8 +30,9 @@ export default function SiteFooter() {
   const navItems = [
     { href: '/', label: isZh ? '首页' : 'Home' },
     { href: '/about', label: isZh ? '关于我们' : 'About' },
-    { href: '/privacy-policy', label: footer.privacy },
-    { href: '/terms-of-service', label: isZh ? '服务条款' : 'Terms of Service' },
+    { href: '/pricing', label: isZh ? '定价' : 'Pricing' },
+    { href: '/terms', label: isZh ? '服务条款' : 'Terms of Service' },
+    { href: '/privacy', label: footer.privacy },
     { href: '/refund', label: isZh ? '退款政策' : 'Refund Policy' },
   ];
 
@@ -262,7 +263,7 @@ export default function SiteFooter() {
                 <p className="font-sans text-ink-light text-xs leading-relaxed mt-3 text-center">
                   {isZh ? '您提交的信息仅用于回复本次咨询，我们不会未经许可发送营销邮件，详情请查看我们的' : 'Your information will only be used to reply to this inquiry. We will not send unsolicited marketing emails. Please view our '}
                   <Link
-                    href="/privacy-policy"
+                    href="/privacy"
                     className="text-primary font-semibold hover:underline"
                   >
                     {isZh ? '隐私政策' : 'Privacy Policy'}
@@ -373,7 +374,7 @@ export default function SiteFooter() {
                 <p className="font-sans text-ink-light text-xs leading-relaxed mt-3 text-center">
                   {isZh ? '您提交的信息仅用于收集产品反馈，不会未经许可推送营销内容，详情查看' : 'Your submitted information will only be used for product improvement. We will not send unauthorized marketing communications. See our '}
                   <Link
-                    href="/privacy-policy"
+                    href="/privacy"
                     className="text-primary font-semibold hover:underline"
                   >
                     {isZh ? '隐私政策' : 'Privacy Policy'}
