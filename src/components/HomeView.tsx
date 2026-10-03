@@ -1,7 +1,7 @@
 /**
  * HomeView 组件 — 首页营销落地页
  * 包含：Hero、讲师背书、四大核心优势、四大主题、家长评价、限时特惠、视听试听、
- * 视频弹窗、统一结账弹窗（跳转 Lemon Squeezy 托管结算）。
+ * 视频弹窗、统一结账弹窗（唤起 Paddle 托管 overlay 结算）。
  * 全站统一页脚 SiteFooter 由 layout.tsx 全局挂载。
  */
 
@@ -667,7 +667,7 @@ export default function HomeView() {
         )}
       </AnimatePresence>
 
-      {/* ============================ 9. 统一结账弹窗（跳转 Lemon Squeezy 托管结算） ============================ */}
+      {/* ============================ 9. 统一结账弹窗（唤起 Paddle overlay 结算） ============================ */}
       <CheckoutModal open={showCheckout} onClose={() => setShowCheckout(false)} />
 
       {/* ============================ Toast 提示 ============================ */}

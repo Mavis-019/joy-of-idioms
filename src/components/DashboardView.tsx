@@ -2,7 +2,7 @@
  * DashboardView 组件 — 付费用户个人中心
  * 包含：顶部解锁横幅、欢迎卡片、学习导航、成语卡片网格
  * 免费试看视频弹窗（与首页试看专区完全一致）
- * 结账弹窗：统一跳转 Lemon Squeezy 托管结算
+ * 结账弹窗：统一唤起 Paddle 托管 overlay 结算
  */
 
 'use client';
@@ -402,7 +402,7 @@ export default function DashboardView() {
         )}
       </AnimatePresence>
 
-      {/* ============ 10. 统一结账弹窗（跳转 Lemon Squeezy 托管结算） ============ */}
+      {/* ============ 10. 统一结账弹窗（唤起 Paddle overlay 结算） ============ */}
       <CheckoutModal open={showCheckout} onClose={() => setShowCheckout(false)} />
     </div>
   );
